@@ -1,0 +1,114 @@
+/* =========================================================
+   Impressão / Salvar como PDF
+   Objetivo: o relatório sair bem direto do navegador,
+   sem biblioteca de geração de PDF.
+   ========================================================= */
+
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm 14mm;
+  }
+
+  :root {
+    /* Impressão sempre em tema claro, independentemente da preferência. */
+    --bg: #FFFFFF;
+    --bg-alt: #F4F1EC;
+    --surface: #FFFFFF;
+    --surface-2: #FAF8F5;
+    --ink: #14201F;
+    --ink-2: #33403E;
+    --muted: #5F6C6A;
+    --primary: #0F5751;
+    --primary-2: #0A3E39;
+    --primary-soft: #E4EFED;
+    --accent: #B45526;
+    --line: #D8D2C8;
+    --line-strong: #BEB5A8;
+    --tone-low: #8A6743;
+    --tone-mid-low: #A08757;
+    --tone-mid: #5C7A72;
+    --tone-mid-high: #2A6A5F;
+    --tone-high: #0F5751;
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-lg: none;
+  }
+
+  body {
+    background: #FFFFFF !important;
+    color: #14201F;
+    font-size: 10.5pt;
+    line-height: 1.5;
+  }
+
+  /* Fora da versão impressa */
+  .site-header,
+  .site-footer,
+  .report-nav,
+  .report-actions,
+  .no-print,
+  .theme-btn,
+  .btn,
+  dialog {
+    display: none !important;
+  }
+
+  .wrap, .wrap--narrow {
+    max-width: none;
+    padding-inline: 0;
+  }
+
+  .section, .section--tight { padding-block: 0; }
+
+  /* Quebras de página */
+  .dimension,
+  .topic,
+  .highlights {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .dimension { break-before: auto; padding-block: 14pt; }
+  .report-hero { border-bottom: 1pt solid var(--line); padding-block: 0 14pt; }
+
+  h1, h2, h3 { break-after: avoid; page-break-after: avoid; }
+  h2 { font-size: 15pt; }
+  h3 { font-size: 12pt; }
+
+  /* Facetas: sempre abertas no papel */
+  .facets > summary { display: none; }
+  .facets__body {
+    border: 0;
+    padding: 0;
+  }
+  .facets[open] .facets__body,
+  .facets .facets__body { display: block !important; }
+
+  .card, .topic__list li, .radar-card {
+    border: 1pt solid var(--line);
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  /* Preserva as cores das barras e do radar. */
+  .bar__fill,
+  .progress__fill,
+  .radar__area,
+  .radar__dot {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .radar { max-width: 300pt; margin-inline: auto; }
+  .overview { grid-template-columns: 1fr; }
+
+  a { color: inherit; text-decoration: none; }
+
+  .disclaimer {
+    break-inside: avoid;
+    font-size: 8.5pt;
+  }
+}
+
+/* Detalhes das facetas abertos ao acionar a impressão pelo botão. */
+.printing .facets__body { display: block !important; }

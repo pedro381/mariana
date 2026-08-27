@@ -710,6 +710,68 @@ p:last-child { margin-bottom: 0; }
   .gallery figure:hover img { transform: none; }
 }
 
+/* ---------- Chamada para a Analise de Perfil Comportamental ---------- */
+.assess {
+  margin-top: clamp(32px, 4vw, 48px);
+  display: grid; gap: clamp(22px, 3vw, 40px); align-items: center;
+  grid-template-columns: 1.15fr .85fr;
+  padding: clamp(26px, 4vw, 44px);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-md);
+}
+@media (max-width: 860px) { .assess { grid-template-columns: 1fr; } }
+
+.assess__eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent-2); margin-bottom: 12px;
+}
+.assess__eyebrow::before {
+  content: ""; width: 7px; height: 7px; border-radius: 999px; background: var(--accent);
+}
+.assess h3 {
+  font-family: var(--ff-display); font-size: clamp(22px, 3.2vw, 30px);
+  line-height: 1.2; margin: 0 0 12px;
+}
+.assess h3 em { font-style: normal; color: var(--primary); }
+.assess p { font-size: 15.5px; line-height: 1.65; color: var(--ink-2); margin: 0 0 18px; }
+
+.assess__facts { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+.assess__facts span {
+  font-size: 13px; font-weight: 600; padding: 6px 13px; border-radius: 999px;
+  background: var(--primary-soft); color: var(--primary-2);
+}
+
+.assess__actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.assess__note { font-size: 12.5px; color: var(--muted); margin: 14px 0 0; line-height: 1.55; }
+
+.assess__panel {
+  border-radius: var(--r-md); padding: clamp(20px, 3vw, 28px);
+  background: linear-gradient(140deg, var(--primary) 0%, var(--primary-2) 100%);
+  color: var(--on-primary); box-shadow: var(--shadow-md);
+}
+.assess__panel h4 {
+  font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  opacity: .78; margin: 0 0 16px;
+}
+.assess__dims { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.assess__dims li { display: flex; align-items: center; gap: 12px; font-size: 14.5px; }
+.assess__dims b {
+  flex: none; width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center;
+  background: rgba(255,255,255,.16); font-family: var(--ff-display); font-size: 14px; font-weight: 600;
+}
+
+/* Link de destaque no menu */
+.nav__links a.is-assess { color: var(--accent-2); font-weight: 600; }
+.nav__links a.is-assess::after {
+  content: ""; display: inline-block; margin-left: 6px; vertical-align: middle;
+  width: 6px; height: 6px; border-radius: 999px; background: var(--accent);
+}
+
+@media print { .assess { display: none !important; } }
+
 /* ---------- Voltar ao topo ---------- */
 .to-top {
   position: fixed; right: 20px; bottom: 20px; z-index: 90;

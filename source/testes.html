@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verificações de integridade — Perfil Comportamental</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="assets/css/variables.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<style>
+  .test { display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-bottom:1px solid var(--line); }
+  .test__mark { flex:none; width:22px; height:22px; border-radius:50%; display:grid; place-items:center;
+                font-size:.72rem; font-weight:700; color:#fff; }
+  .test--ok  .test__mark { background: var(--ok); }
+  .test--bad .test__mark { background: var(--error); }
+  .test__name { font-weight:600; font-size:.94rem; }
+  .test__detail { font-size:.85rem; color:var(--muted); }
+  .test--bad .test__detail { color: var(--error); font-weight:500; }
+  .summary { padding:20px 24px; border-radius:var(--r-md); margin-bottom:24px; font-weight:600; }
+  .summary--ok  { background:var(--ok-soft);   color:var(--ink); }
+  .summary--bad { background:var(--error-soft); color:var(--ink); }
+  table.dist { width:100%; border-collapse:collapse; font-size:.88rem; margin-top:12px; }
+  table.dist th, table.dist td { padding:8px 10px; border-bottom:1px solid var(--line); text-align:left; }
+  table.dist th { color:var(--muted); font-weight:600; font-size:.8rem; text-transform:uppercase; letter-spacing:.06em; }
+  table.dist td.num { text-align:right; font-variant-numeric:tabular-nums; }
+</style>
+</head>
+<body class="page">
+
+<main class="section">
+  <div class="wrap">
+    <p class="eyebrow">Ferramenta de desenvolvimento</p>
+    <h1 style="font-size:1.9rem">Verificações de integridade</h1>
+    <p class="lead" style="max-width:64ch">
+      Validação do banco de itens, do algoritmo de pontuação e do gerador de relatório.
+      Esta página não faz parte do fluxo do participante.
+    </p>
+
+    <div id="summary" class="summary" style="margin-top:32px">Executando...</div>
+
+    <div id="results"></div>
+
+    <section style="margin-top:48px">
+      <h2 style="font-size:1.25rem">Distribuição do banco de itens</h2>
+      <div id="distribution"></div>
+    </section>
+
+    <section style="margin-top:48px">
+      <h2 style="font-size:1.25rem">Simulação de perfis</h2>
+      <p class="muted" style="font-size:.92rem">
+        Índices produzidos por conjuntos de respostas conhecidos. Útil para conferir, a olho, se a
+        pontuação está se comportando como esperado.
+      </p>
+      <div id="simulation"></div>
+    </section>
+
+    <div class="actions" style="margin-top:40px">
+      <a class="btn btn--ghost" href="index.html">Voltar ao início</a>
+    </div>
+  </div>
+</main>
+
+<script type="module">
+  import { runAllChecks, respostasUniformes, respostasVariadas } from './assets/js/dev/self-test.js';
+  import { QUESTIONS } from './assets/js/data/questions.js';
+  import { DOMAINS, DOMAIN_ORDER } from './assets/js/data/domains.js';
+  import { calculateBigFive } from './assets/js/scoring/big-five.js';
+  import { escapeHtml } from './assets/js/utils/formatters.js';
+
+  const resultado = runAllChecks();
+
+  const resumo = document.getElementById('summary');
+  resumo.className = `summary ${resultado.ok ? 'summary--ok' : 'summary--bad'}`;
+  resumo.textContent = resultado.ok
+    ? `Todas as ${resultado.total} verificações passaram.`
+    : `${resultado.falhas} de ${resultado.total} verificações falharam.`;
+
+  document.getElementById('results').innerHTML = resultado.testes.map((t) => `
+    <div class="test ${t.ok ? 'test--ok' : 'test--bad'}">
+      <span class="test__mark" aria-hidden="true">${t.ok ? '✓' : '✕'}</span>
+      <div>
+        <div class="test__name">${escapeHtml(t.nome)}</div>
+        <div class="test__detail">${escapeHtml(t.detalhe)}</div>
+      </div>
+    </div>`).join('');
+
+  /* ---- Distribuição ---- */
+  const linhas = DOMAIN_ORDER.map((d) => {
+    const doDominio = QUESTIONS.filter((q) => q.domain === d);
+    const invertidos = doDominio.filter((q) => q.keyed === 'minus').length;
+    const porFaceta = DOMAINS[d].facets
+      .map((f) => `${f.name}: ${doDominio.filter((q) => q.facet === f.n).length}`)
+      .join(' · ');
+    return `
+      <tr>
+        <td><strong>${escapeHtml(DOMAINS[d].name)}</strong><br><span class="muted" style="font-size:.82rem">${escapeHtml(porFaceta)}</span></td>
+        <td class="num">${doDominio.length}</td>
+        <td class="num">${doDominio.length - invertidos}</td>
+        <td class="num">${invertidos}</td>
+      </tr>`;
+  }).join('');
+
+  document.getElementById('distribution').innerHTML = `
+    <table class="dist">
+      <thead><tr><th>Dimensão</th><th style="text-align:right">Itens</th><th style="text-align:right">Diretos</th><th style="text-align:right">Invertidos</th></tr></thead>
+      <tbody>${linhas}</tbody>
+    </table>`;
+
+  /* ---- Simulação ---- */
+  const cenarios = [
+    { nome: 'Todas as respostas = 1', respostas: respostasUniformes(1) },
+    { nome: 'Todas as respostas = 3 (neutro)', respostas: respostasUniformes(3) },
+    { nome: 'Todas as respostas = 5', respostas: respostasUniformes(5) },
+    { nome: 'Padrão variado determinístico', respostas: respostasVariadas() }
+  ];
+
+  const cabecalho = DOMAIN_ORDER.map((d) => `<th style="text-align:right">${escapeHtml(DOMAINS[d].short)}</th>`).join('');
+  const corpo = cenarios.map((c) => {
+    const r = calculateBigFive(c.respostas);
+    const celulas = DOMAIN_ORDER.map((d) => `<td class="num">${Math.round(r.byKey[d].index)}</td>`).join('');
+    return `<tr><td>${escapeHtml(c.nome)}</td>${celulas}</tr>`;
+  }).join('');
+
+  document.getElementById('simulation').innerHTML = `
+    <table class="dist">
+      <thead><tr><th>Cenário</th>${cabecalho}</tr></thead>
+      <tbody>${corpo}</tbody>
+    </table>
+    <p class="muted" style="font-size:.82rem;margin-top:10px">
+      Índices de 0 a 100 na direção exibida ao participante — para Estabilidade, o eixo invertido de Neuroticismo.
+    </p>`;
+</script>
+</body>
+</html>

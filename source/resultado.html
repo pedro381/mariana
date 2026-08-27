@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seu perfil comportamental — Relatório</title>
+<meta name="theme-color" content="#0F5751">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230F5751'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' font-weight='600' fill='%23fff' text-anchor='middle'%3EMM%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/variables.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/report.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+<link rel="stylesheet" href="assets/css/print.css">
+</head>
+
+<body class="page">
+<a class="skip-link" href="#relatorio">Pular para o relatório</a>
+
+<header class="site-header no-print">
+  <div class="site-header__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark" aria-hidden="true">MM</span>
+      <span class="brand__text">
+        Perfil Comportamental
+        <span>Relatório</span>
+      </span>
+    </a>
+    <div class="header-actions">
+      <button type="button" class="btn btn--quiet" id="btnPrintTop">Imprimir / PDF</button>
+      <button type="button" class="theme-btn" id="themeBtn" aria-label="Alternar tema claro e escuro">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="relatorio">
+
+  <!-- Estado: nenhum relatório disponível -->
+  <section class="section hidden" id="emptyState">
+    <div class="wrap wrap--narrow center">
+      <h1 style="font-size:1.8rem">Nenhum relatório encontrado</h1>
+      <p class="lead">
+        Não há avaliação concluída salva neste navegador. Se você respondeu em outro dispositivo,
+        o relatório está lá — ou no e-mail que enviamos ao concluir.
+      </p>
+      <div class="actions" style="justify-content:center;margin-top:24px">
+        <a class="btn" href="index.html">Fazer a avaliação</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Relatório -->
+  <div id="reportRoot" class="hidden">
+
+    <section class="report-hero">
+      <div class="wrap">
+        <p class="eyebrow">Análise de perfil comportamental</p>
+        <h1 id="reportTitle">Seu perfil comportamental</h1>
+        <p class="lead" id="reportGreeting"></p>
+        <div class="report-hero__meta" id="reportMeta"></div>
+      </div>
+    </section>
+
+    <div class="wrap no-print">
+      <nav class="report-nav" aria-label="Seções do relatório">
+        <a href="#visao-geral">Visão geral</a>
+        <a href="#dimensoes">Dimensões</a>
+        <a href="#pontos-fortes">Pontos fortes</a>
+        <a href="#trabalho">Ambiente profissional</a>
+        <a href="#comunicacao">Comunicação</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#lideranca">Liderança</a>
+        <a href="#decisao">Decisão</a>
+        <a href="#desenvolvimento">Desenvolvimento</a>
+      </nav>
+    </div>
+
+    <!-- Estado do envio por e-mail -->
+    <div class="wrap no-print">
+      <div class="email-status" id="emailStatus" hidden></div>
+    </div>
+
+    <!-- Visão geral -->
+    <section class="section--tight" id="visao-geral" style="padding-top:clamp(28px,5vw,48px)">
+      <div class="wrap">
+        <div class="overview">
+          <div>
+            <h2>Visão geral</h2>
+            <div id="overviewText" class="stack"></div>
+          </div>
+          <aside>
+            <div class="radar-card" id="radarCard"></div>
+            <div style="margin-top:24px">
+              <ul class="summary-list" id="summaryList"></ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dimensões -->
+    <div class="wrap" id="dimensoes">
+      <div id="dimensionsRoot"></div>
+    </div>
+
+    <!-- Pontos fortes e atenção -->
+    <div class="wrap">
+      <section class="topic" id="pontos-fortes">
+        <div class="highlights">
+          <div>
+            <h2 style="font-size:1.35rem" id="strengthsTitle"></h2>
+            <p class="topic__intro" id="strengthsIntro"></p>
+            <ul class="highlight-list" id="strengthsList"></ul>
+          </div>
+          <div>
+            <h2 style="font-size:1.35rem" id="watchoutsTitle"></h2>
+            <p class="topic__intro" id="watchoutsIntro"></p>
+            <ul class="highlight-list" id="watchoutsList"></ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seções temáticas -->
+      <div id="topicsRoot"></div>
+
+      <!-- Desenvolvimento -->
+      <section class="topic development" id="desenvolvimento">
+        <h2 style="font-size:1.35rem" id="devTitle"></h2>
+        <p class="topic__intro" id="devIntro"></p>
+        <ul class="topic__list" id="devList"></ul>
+      </section>
+
+      <!-- Metodologia e aviso -->
+      <section class="topic" id="metodologia">
+        <h2 style="font-size:1.35rem">Como este relatório foi construído</h2>
+        <div id="methodologyText" class="stack" style="font-size:.94rem;color:var(--ink-2)"></div>
+        <p class="disclaimer" style="margin-top:24px" id="disclaimerText"></p>
+      </section>
+
+      <!-- Ações -->
+      <section class="report-actions no-print">
+        <h2 style="font-size:1.2rem">O que fazer agora</h2>
+        <p class="muted" style="font-size:.92rem">
+          O relatório fica salvo neste navegador. Você pode imprimi-lo, salvá-lo em PDF ou reenviar
+          por e-mail.
+        </p>
+        <div class="actions">
+          <button type="button" class="btn" id="btnPrint">Imprimir ou salvar em PDF</button>
+          <button type="button" class="btn btn--ghost" id="btnResend">Enviar por e-mail novamente</button>
+          <button type="button" class="btn btn--ghost" id="btnRetake">Refazer avaliação</button>
+        </div>
+
+        <div class="danger-zone">
+          <strong style="color:var(--ink)">Privacidade</strong>
+          <p style="margin:6px 0 0">
+            Suas respostas e este relatório estão guardados apenas neste navegador, neste
+            dispositivo. Se quiser, apague tudo agora — lembre-se de salvar o PDF antes.
+          </p>
+          <div class="actions">
+            <button type="button" class="btn btn--quiet" id="btnWipe">Apagar meus dados deste dispositivo</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer no-print">
+  <div class="wrap site-footer__inner">
+    <span>Mariana Magalhães de Souza · Engenharia da Qualidade e Desenvolvimento Humano</span>
+    <span><a href="privacidade.html">Privacidade</a> · <a href="../index.html">Voltar ao site</a></span>
+  </div>
+</footer>
+
+<!-- Confirmações -->
+<dialog class="modal" id="confirmDialog" aria-labelledby="confirmTitle">
+  <h3 id="confirmTitle" style="font-size:1.15rem"></h3>
+  <p class="muted" style="font-size:.94rem" id="confirmText"></p>
+  <div class="modal__actions">
+    <button type="button" class="btn btn--ghost" id="confirmCancel">Cancelar</button>
+    <button type="button" class="btn btn--accent" id="confirmOk">Confirmar</button>
+  </div>
+</dialog>
+
+<script type="module" src="assets/js/report/report-view.js"></script>
+</body>
+</html>

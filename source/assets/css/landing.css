@@ -1,0 +1,195 @@
+/* =========================================================
+   Página inicial: apresentação, identificação e consentimento
+   ========================================================= */
+
+.hero {
+  padding-block: clamp(48px, 10vw, 104px) clamp(36px, 7vw, 72px);
+  background:
+    radial-gradient(70% 130% at 85% -10%, color-mix(in srgb, var(--primary) 10%, transparent), transparent 65%),
+    var(--bg);
+}
+.hero__inner { max-width: 780px; }
+.hero__title { margin-bottom: .35em; }
+.hero__title em {
+  font-style: normal;
+  color: var(--primary);
+}
+.hero__lead {
+  font-size: clamp(1.05rem, 2.4vw, 1.28rem);
+  line-height: 1.65;
+  color: var(--ink-2);
+  max-width: 62ch;
+}
+.hero__actions { margin-top: clamp(24px, 4vw, 36px); }
+.hero__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  margin-top: 24px;
+}
+
+/* ---------- Como funciona ---------- */
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+  counter-reset: passo;
+}
+@media (min-width: 760px) {
+  .steps { grid-template-columns: repeat(2, 1fr); }
+}
+.steps li {
+  counter-increment: passo;
+  position: relative;
+  padding: 20px 22px 20px 62px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  margin: 0;
+}
+.steps li::before {
+  content: counter(passo);
+  position: absolute;
+  left: 20px; top: 20px;
+  width: 28px; height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--primary-soft);
+  color: var(--primary-2);
+  font-size: .82rem;
+  font-weight: 700;
+}
+.steps h3 { font-size: 1rem; margin-bottom: .3em; font-family: var(--ff-body); }
+.steps p { font-size: .92rem; color: var(--ink-2); margin: 0; }
+
+/* ---------- Dimensões apresentadas ---------- */
+
+.dims {
+  display: grid;
+  gap: 14px;
+}
+@media (min-width: 700px) {
+  .dims { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+}
+.dim-card {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--surface);
+}
+.dim-card__letter {
+  display: grid;
+  place-items: center;
+  width: 34px; height: 34px;
+  border-radius: var(--r-sm);
+  background: var(--primary-soft);
+  color: var(--primary-2);
+  font-family: var(--ff-display);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.dim-card h3 { font-size: .98rem; font-family: var(--ff-body); margin-bottom: .3em; }
+.dim-card p { font-size: .88rem; color: var(--muted); margin: 0; line-height: 1.6; }
+
+/* ---------- Formulário de entrada ---------- */
+
+.start-card {
+  max-width: 620px;
+  margin-inline: auto;
+}
+.start-card__foot {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.consent-summary {
+  margin: 0 0 18px;
+  padding: 18px 20px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+}
+.consent-summary h3 {
+  font-size: .92rem;
+  font-family: var(--ff-body);
+  margin-bottom: .6em;
+}
+.consent-summary ul {
+  margin: 0;
+  padding-left: 1.15em;
+  font-size: .88rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+.consent-summary li { margin-bottom: .4em; }
+
+/* ---------- Retomada de avaliação ---------- */
+
+.resume {
+  margin-bottom: clamp(24px, 4vw, 36px);
+  border-left: 3px solid var(--primary);
+}
+.resume__progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 14px 0 18px;
+}
+.resume__bar {
+  flex: 1;
+  height: 8px;
+  border-radius: var(--r-pill);
+  background: var(--bg-alt);
+  overflow: hidden;
+}
+.resume__fill {
+  height: 100%;
+  background: var(--primary);
+  border-radius: var(--r-pill);
+}
+.resume__pct {
+  font-size: .84rem;
+  font-weight: 600;
+  color: var(--primary);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ---------- FAQ ---------- */
+
+.faq { border-top: 1px solid var(--line); }
+.faq details {
+  border-bottom: 1px solid var(--line);
+}
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 0;
+  font-weight: 600;
+  font-size: .98rem;
+  min-height: var(--touch);
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: "＋";
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+.faq details[open] summary::after { content: "－"; }
+.faq details[open] summary { color: var(--primary); }
+.faq__body {
+  padding-bottom: 20px;
+  font-size: .94rem;
+  line-height: 1.7;
+  color: var(--ink-2);
+  max-width: 68ch;
+}

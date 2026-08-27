@@ -1,0 +1,148 @@
+/* =========================================================
+   Tokens de design
+   A paleta acompanha a identidade do site principal
+   (verde profundo + terracota sobre fundo quente).
+   ========================================================= */
+
+:root {
+  /* Superfícies */
+  --bg:            #FBF8F3;
+  --bg-alt:        #F4EEE5;
+  --surface:       #FFFFFF;
+  --surface-2:     #FDFBF8;
+
+  /* Texto */
+  --ink:           #16201F;
+  --ink-2:         #3D4E4B;
+  --muted:         #6B7B78;
+
+  /* Marca */
+  --primary:       #0F5751;
+  --primary-2:     #0A3E39;
+  --primary-soft:  #E2EFED;
+  --accent:        #C9622E;
+  --accent-2:      #A94E20;
+  --accent-soft:   #FAE7D9;
+
+  /* Estruturais */
+  --line:          #E5DCD0;
+  --line-strong:   #D3C6B5;
+  --on-primary:    #FFFFFF;
+  --focus:         #0F5751;
+
+  /* Estados */
+  --ok:            #1F7A5C;
+  --ok-soft:       #E1F1EA;
+  --warn:          #9A6B12;
+  --warn-soft:     #FBF0D8;
+  --error:         #A3352A;
+  --error-soft:    #FBE6E3;
+
+  /* Faixas de classificação (do polo baixo ao alto) */
+  --tone-low:       #A9805A;
+  --tone-mid-low:   #B99A6B;
+  --tone-mid:       #6B8F86;
+  --tone-mid-high:  #2E7C6E;
+  --tone-high:      #0F5751;
+
+  /* Sombras */
+  --shadow-sm: 0 1px 2px rgba(20,32,31,.05);
+  --shadow-md: 0 2px 4px rgba(20,32,31,.04), 0 12px 28px -16px rgba(20,32,31,.28);
+  --shadow-lg: 0 4px 8px rgba(20,32,31,.05), 0 28px 60px -28px rgba(20,32,31,.35);
+
+  /* Raios */
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-pill: 999px;
+
+  /* Tipografia */
+  --ff-display: "Fraunces", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --ff-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Métrica */
+  --maxw: 1080px;
+  --maxw-narrow: 720px;
+  --pad: clamp(18px, 5vw, 40px);
+  --sec-y: clamp(56px, 9vw, 104px);
+
+  /* Alvo mínimo de toque */
+  --touch: 48px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:           #0C1514;
+    --bg-alt:       #101C1A;
+    --surface:      #142220;
+    --surface-2:    #172725;
+    --ink:          #EDF2F0;
+    --ink-2:        #BACAC7;
+    --muted:        #8A9C99;
+    --primary:      #55C4B4;
+    --primary-2:    #86DACD;
+    --primary-soft: #12312D;
+    --accent:       #E8875A;
+    --accent-2:     #F3A97F;
+    --accent-soft:  #331D12;
+    --line:         #253532;
+    --line-strong:  #334643;
+    --on-primary:   #07201D;
+    --focus:        #86DACD;
+
+    --ok:           #6FD3AE;
+    --ok-soft:      #10312A;
+    --warn:         #E0B65E;
+    --warn-soft:    #33280F;
+    --error:        #F0968B;
+    --error-soft:   #3A1A17;
+
+    --tone-low:      #C79E76;
+    --tone-mid-low:  #CDB287;
+    --tone-mid:      #8FADA6;
+    --tone-mid-high: #4FBFAB;
+    --tone-high:     #86DACD;
+
+    --shadow-sm: 0 1px 2px rgba(0,0,0,.4);
+    --shadow-md: 0 2px 4px rgba(0,0,0,.35), 0 12px 28px -16px rgba(0,0,0,.7);
+    --shadow-lg: 0 4px 8px rgba(0,0,0,.35), 0 28px 60px -28px rgba(0,0,0,.8);
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg:           #0C1514;
+  --bg-alt:       #101C1A;
+  --surface:      #142220;
+  --surface-2:    #172725;
+  --ink:          #EDF2F0;
+  --ink-2:        #BACAC7;
+  --muted:        #8A9C99;
+  --primary:      #55C4B4;
+  --primary-2:    #86DACD;
+  --primary-soft: #12312D;
+  --accent:       #E8875A;
+  --accent-2:     #F3A97F;
+  --accent-soft:  #331D12;
+  --line:         #253532;
+  --line-strong:  #334643;
+  --on-primary:   #07201D;
+  --focus:        #86DACD;
+
+  --ok:           #6FD3AE;
+  --ok-soft:      #10312A;
+  --warn:         #E0B65E;
+  --warn-soft:    #33280F;
+  --error:        #F0968B;
+  --error-soft:   #3A1A17;
+
+  --tone-low:      #C79E76;
+  --tone-mid-low:  #CDB287;
+  --tone-mid:      #8FADA6;
+  --tone-mid-high: #4FBFAB;
+  --tone-high:     #86DACD;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.4);
+  --shadow-md: 0 2px 4px rgba(0,0,0,.35), 0 12px 28px -16px rgba(0,0,0,.7);
+  --shadow-lg: 0 4px 8px rgba(0,0,0,.35), 0 28px 60px -28px rgba(0,0,0,.8);
+}

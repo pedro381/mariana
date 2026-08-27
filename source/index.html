@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Análise de Perfil Comportamental — Mariana Magalhães de Souza</title>
+<meta name="description" content="Inventário de perfil comportamental baseado no modelo Big Five (IPIP-NEO-120). 120 questões, relatório completo com as cinco dimensões e trinta facetas, enviado por e-mail.">
+<meta name="theme-color" content="#0F5751">
+<meta name="robots" content="noindex, follow">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230F5751'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' font-weight='600' fill='%23fff' text-anchor='middle'%3EMM%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/variables.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/landing.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+<link rel="stylesheet" href="assets/css/print.css">
+</head>
+
+<body class="page">
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark" aria-hidden="true">MM</span>
+      <span class="brand__text">
+        Perfil Comportamental
+        <span>Mariana Magalhães de Souza</span>
+      </span>
+    </a>
+    <div class="header-actions">
+      <button type="button" class="theme-btn" id="themeBtn" aria-label="Alternar tema claro e escuro">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <!-- ============ Apresentação ============ -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero__inner">
+        <p class="eyebrow">Inventário de perfil comportamental</p>
+        <h1 class="hero__title">Entenda como você <em>tende a funcionar</em> — com método, não com adivinhação.</h1>
+        <p class="hero__lead">
+          Uma avaliação de autoconhecimento construída sobre o modelo Big Five, o mais consolidado
+          da psicologia da personalidade contemporânea. São 120 afirmações e um relatório completo:
+          cinco dimensões, trinta facetas e uma leitura aplicada ao seu dia a dia.
+        </p>
+
+        <div class="hero__facts">
+          <span class="pill">120 questões</span>
+          <span class="pill">cerca de 15 minutos</span>
+          <span class="pill">pode parar e continuar depois</span>
+          <span class="pill">relatório por e-mail</span>
+        </div>
+
+        <div class="hero__actions actions">
+          <a class="btn btn--lg" href="#comecar">Começar a avaliação</a>
+          <a class="btn btn--ghost btn--lg" href="#como-funciona">Como funciona</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Retomada ============ -->
+  <div class="wrap">
+    <section class="card resume hidden" id="resumeCard" aria-labelledby="resumeTitle">
+      <p class="eyebrow" style="margin-bottom:6px">Avaliação em andamento</p>
+      <h2 id="resumeTitle" style="font-size:1.35rem">Encontramos uma avaliação em andamento</h2>
+      <p id="resumeText" class="muted"></p>
+
+      <div class="resume__progress">
+        <div class="resume__bar"><div class="resume__fill" id="resumeFill"></div></div>
+        <span class="resume__pct" id="resumePct">0%</span>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn" id="btnResume">Continuar avaliação</button>
+        <button type="button" class="btn btn--ghost" id="btnRestart">Começar novamente</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ Como funciona ============ -->
+  <section class="section" id="como-funciona">
+    <div class="wrap">
+      <p class="eyebrow">Como funciona</p>
+      <h2>Quatro etapas, do começo ao relatório</h2>
+      <p class="lead" style="max-width:64ch;margin-bottom:32px">
+        Você responde no seu ritmo. Cada resposta é salva automaticamente no seu navegador — se
+        fechar a página no meio, retoma exatamente de onde parou.
+      </p>
+
+      <ol class="steps">
+        <li>
+          <h3>Identificação</h3>
+          <p>Nome e e-mail, para que o relatório chegue até você. Telefone, empresa e cargo são opcionais.</p>
+        </li>
+        <li>
+          <h3>120 afirmações</h3>
+          <p>Uma por vez. Para cada uma, você indica o quanto ela descreve você, numa escala de cinco níveis.</p>
+        </li>
+        <li>
+          <h3>Cálculo do perfil</h3>
+          <p>As respostas são pontuadas segundo o método do IPIP-NEO-120, com correção dos itens invertidos.</p>
+        </li>
+        <li>
+          <h3>Relatório completo</h3>
+          <p>Exibido na tela e enviado para o seu e-mail, com gráfico, dimensões, facetas e sugestões de desenvolvimento.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ As cinco dimensões ============ -->
+  <section class="section section--tight">
+    <div class="wrap">
+      <p class="eyebrow">O que é medido</p>
+      <h2>As cinco grandes dimensões</h2>
+      <p class="lead" style="max-width:64ch;margin-bottom:32px">
+        O modelo Big Five organiza as diferenças individuais em cinco eixos amplos. Cada um se
+        desdobra em seis facetas — trinta ao todo — que mostram onde, dentro de cada dimensão, o
+        seu resultado se concentra.
+      </p>
+
+      <div class="dims" id="dimsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ Formulário ============ -->
+  <section class="section" id="comecar">
+    <div class="wrap">
+      <div class="card start-card">
+        <p class="eyebrow">Vamos começar</p>
+        <h2 style="font-size:1.6rem">Seus dados</h2>
+        <p class="muted" style="font-size:.94rem">
+          Pedimos apenas o necessário para gerar e entregar o relatório.
+        </p>
+
+        <form id="startForm" novalidate style="margin-top:24px">
+          <div class="field">
+            <label class="field__label" for="name">Nome completo</label>
+            <input class="input" type="text" id="name" name="name" autocomplete="name"
+                   required aria-describedby="name-error" placeholder="Nome e sobrenome">
+            <span class="field__error" id="name-error" role="alert"></span>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="email">E-mail</label>
+            <input class="input" type="email" id="email" name="email" autocomplete="email"
+                   inputmode="email" required aria-describedby="email-hint email-error"
+                   placeholder="voce@exemplo.com">
+            <span class="field__hint" id="email-hint">É para este endereço que o relatório será enviado.</span>
+            <span class="field__error" id="email-error" role="alert"></span>
+          </div>
+
+          <div class="field-grid field-grid--2">
+            <div class="field">
+              <label class="field__label" for="phone">Telefone <span class="opt">(opcional)</span></label>
+              <input class="input" type="tel" id="phone" name="phone" autocomplete="tel"
+                     inputmode="tel" aria-describedby="phone-error" placeholder="(31) 99999-9999">
+              <span class="field__error" id="phone-error" role="alert"></span>
+            </div>
+            <div class="field">
+              <label class="field__label" for="company">Empresa <span class="opt">(opcional)</span></label>
+              <input class="input" type="text" id="company" name="company" autocomplete="organization">
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="role">Cargo ou profissão <span class="opt">(opcional)</span></label>
+            <input class="input" type="text" id="role" name="role" autocomplete="organization-title">
+          </div>
+
+          <!-- Consentimento -->
+          <div class="consent-summary" style="margin-top:28px">
+            <h3>Antes de começar, é importante saber</h3>
+            <ul>
+              <li><strong>Finalidade:</strong> autoconhecimento comportamental. Não é diagnóstico psicológico, laudo nem avaliação clínica.</li>
+              <li><strong>Extensão:</strong> 120 afirmações, cerca de 15 minutos de dedicação.</li>
+              <li><strong>Progresso:</strong> suas respostas ficam salvas no seu próprio navegador, neste dispositivo — e você pode apagá-las quando quiser.</li>
+              <li><strong>Entrega:</strong> ao concluir, o relatório é exibido na tela e enviado para o e-mail informado.</li>
+              <li><strong>Cópia:</strong> uma cópia do relatório é enviada para <span id="adminEmailLabel">a responsável pelo site</span>.</li>
+              <li><strong>Privacidade:</strong> seus dados não são vendidos nem compartilhados com terceiros. Veja a <a href="privacidade.html">política de privacidade</a>.</li>
+            </ul>
+          </div>
+
+          <label class="check">
+            <input type="checkbox" id="consent" name="consent" required aria-describedby="consent-error">
+            <span class="check__text">
+              Li e concordo com os termos e com o tratamento dos dados informado acima.
+            </span>
+          </label>
+          <span class="field__error" id="consent-error" role="alert"></span>
+
+          <div class="start-card__foot">
+            <button type="submit" class="btn btn--lg btn--block" id="btnStart">
+              Iniciar avaliação
+            </button>
+            <p class="muted" style="font-size:.84rem;margin-top:14px;text-align:center">
+              Você pode interromper a qualquer momento e voltar depois.
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Perguntas frequentes ============ -->
+  <section class="section section--tight">
+    <div class="wrap wrap--narrow">
+      <p class="eyebrow">Dúvidas comuns</p>
+      <h2 style="margin-bottom:20px">Perguntas frequentes</h2>
+
+      <div class="faq">
+        <details>
+          <summary>Isso é um teste de personalidade daqueles da internet?</summary>
+          <div class="faq__body">
+            Não. O instrumento utilizado é o IPIP-NEO-120, desenvolvido por John A. Johnson a partir
+            do International Personality Item Pool, um conjunto de itens de domínio público mantido
+            pelo Oregon Research Institute e amplamente usado em pesquisa. O modelo por trás dele —
+            o Big Five, ou Modelo dos Cinco Grandes Fatores — é o mais consolidado da psicologia da
+            personalidade contemporânea.
+          </div>
+        </details>
+
+        <details>
+          <summary>O resultado é um diagnóstico?</summary>
+          <div class="faq__body">
+            Não, e isso é importante. Esta avaliação tem finalidade informativa e de autoconhecimento
+            comportamental. Ela não constitui diagnóstico psicológico, laudo psicológico ou avaliação
+            clínica, e não deve ser usada isoladamente para decisões de alto impacto, como contratação
+            ou desligamento.
+          </div>
+        </details>
+
+        <details>
+          <summary>Meu resultado vai me comparar com outras pessoas?</summary>
+          <div class="faq__body">
+            Não. O relatório apresenta índices de 0 a 100 que são uma transformação matemática da
+            média das suas próprias respostas em cada dimensão. Eles não são percentis: um percentil
+            exigiria uma população normativa validada para o público brasileiro, o que esta
+            plataforma ainda não possui. Sempre que você vir um número aqui, ele descreve o seu
+            resultado — não a sua posição em relação aos outros.
+          </div>
+        </details>
+
+        <details>
+          <summary>Onde ficam as minhas respostas?</summary>
+          <div class="faq__body">
+            No seu próprio navegador, neste dispositivo, usando o armazenamento local. Elas não são
+            enviadas a nenhum servidor enquanto você responde. Ao final, o relatório é enviado por
+            e-mail para você e uma cópia vai para a responsável pelo site. Você pode apagar todos os
+            dados locais com um clique, na própria página do relatório.
+          </div>
+        </details>
+
+        <details>
+          <summary>Posso parar no meio?</summary>
+          <div class="faq__body">
+            Pode. Cada resposta é salva no momento em que você a escolhe. Feche a aba, feche o
+            navegador, volte amanhã: ao abrir a página novamente, a plataforma detecta a avaliação
+            em andamento e oferece continuar exatamente da pergunta em que você parou.
+          </div>
+        </details>
+
+        <details>
+          <summary>Existe resposta certa?</summary>
+          <div class="faq__body">
+            Não existe. O instrumento mede tendências, não competências, e nenhum polo da escala é
+            melhor que o outro. O resultado só é útil se você responder com o que de fato acontece
+            com você na maior parte do tempo — e não com o que parece mais desejável.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <span>Mariana Magalhães de Souza · Engenharia da Qualidade e Desenvolvimento Humano</span>
+    <span><a href="privacidade.html">Privacidade</a> · <a href="../index.html">Voltar ao site</a></span>
+  </div>
+</footer>
+
+<!-- Confirmação de recomeço -->
+<dialog class="modal" id="restartDialog" aria-labelledby="restartTitle">
+  <h3 id="restartTitle" style="font-size:1.15rem">Começar novamente?</h3>
+  <p class="muted" style="font-size:.94rem">
+    Isso apaga as respostas já salvas neste dispositivo. A ação não pode ser desfeita.
+  </p>
+  <div class="modal__actions">
+    <button type="button" class="btn btn--ghost" id="restartCancel">Manter avaliação</button>
+    <button type="button" class="btn btn--accent" id="restartConfirm">Apagar e recomeçar</button>
+  </div>
+</dialog>
+
+<script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 # Clones de referência (contêm .git próprio e quebrariam como submódulo)
-/source/
+# Ignora apenas os clones — a plataforma em /source/ precisa ser versionada e publicada.
+/source/references/
 
 # Fotos originais sem tratamento — o site publica as versões de assets/img/
 /img/

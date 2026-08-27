@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Avaliação — Perfil Comportamental</title>
+<meta name="theme-color" content="#0F5751">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230F5751'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' font-weight='600' fill='%23fff' text-anchor='middle'%3EMM%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/variables.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/assessment.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+
+<body class="page">
+<a class="skip-link" href="#pergunta">Pular para a pergunta</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark" aria-hidden="true">MM</span>
+      <span class="brand__text">
+        Perfil Comportamental
+        <span id="participantLabel">Avaliação em andamento</span>
+      </span>
+    </a>
+    <div class="header-actions">
+      <span class="autosave" id="autosave" role="status">
+        <span class="autosave__dot" aria-hidden="true"></span> salvo
+      </span>
+      <button type="button" class="theme-btn" id="themeBtn" aria-label="Alternar tema claro e escuro">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="assessment" id="assessment">
+
+  <!-- ===== Progresso ===== -->
+  <div class="progress" id="progressBar">
+    <div class="progress__inner">
+      <div class="progress__meta">
+        <span class="progress__count" id="progressCount">Pergunta 1 de 120</span>
+        <span id="progressPct">0% concluído</span>
+      </div>
+      <div class="progress__track">
+        <div class="progress__fill" id="progressFill"
+             role="progressbar" aria-valuemin="0" aria-valuemax="120" aria-valuenow="0"
+             aria-label="Progresso da avaliação"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Pergunta ===== -->
+  <div class="question-area" id="questionArea">
+    <section class="question" id="pergunta" aria-live="polite">
+      <p class="question__prompt">O quanto esta frase descreve você?</p>
+      <h1 class="question__text" id="questionText">Carregando...</h1>
+
+      <fieldset class="options" id="options">
+        <legend>Escolha uma opção</legend>
+      </fieldset>
+    </section>
+  </div>
+
+  <!-- ===== Revisão (exibida ao final) ===== -->
+  <div class="wrap wrap--narrow hidden" id="reviewArea">
+    <section class="section--tight review">
+      <p class="eyebrow">Revisão</p>
+      <h2 id="reviewTitle">Tudo respondido</h2>
+      <p class="muted" id="reviewText"></p>
+
+      <div class="review__grid" id="reviewGrid" role="list"
+           aria-label="Mapa das respostas. Toque em um número para revisar a pergunta."></div>
+
+      <div class="notice" id="reviewNotice" hidden></div>
+
+      <div class="actions" style="margin-top:24px">
+        <button type="button" class="btn btn--lg" id="btnFinish">Concluir e ver meu perfil</button>
+        <button type="button" class="btn btn--ghost" id="btnBackToQuestions">Voltar às perguntas</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== Processamento ===== -->
+  <div class="wrap wrap--narrow hidden" id="processingArea">
+    <div class="processing">
+      <div class="spinner" aria-hidden="true"></div>
+      <div>
+        <h2 style="font-size:1.3rem">Calculando o seu perfil</h2>
+        <p class="muted" id="processingText">Pontuando as 120 respostas e gerando o relatório.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Navegação ===== -->
+  <nav class="nav-bar" id="navBar" aria-label="Navegação entre perguntas">
+    <div class="nav-bar__inner">
+      <button type="button" class="btn btn--ghost" id="btnPrev">
+        <span aria-hidden="true">←</span> Anterior
+      </button>
+      <span class="nav-bar__hint" id="navHint">Use as teclas 1 a 5 para responder</span>
+      <button type="button" class="btn" id="btnNext">
+        Próxima <span aria-hidden="true">→</span>
+      </button>
+    </div>
+  </nav>
+
+</main>
+
+<!-- Sair da avaliação -->
+<dialog class="modal" id="leaveDialog" aria-labelledby="leaveTitle">
+  <h3 id="leaveTitle" style="font-size:1.15rem">Suas respostas estão salvas</h3>
+  <p class="muted" style="font-size:.94rem">
+    Você pode fechar esta página e continuar depois, no mesmo dispositivo e navegador.
+  </p>
+  <div class="modal__actions">
+    <button type="button" class="btn btn--ghost" id="leaveCancel">Continuar respondendo</button>
+    <a class="btn" href="index.html">Sair da avaliação</a>
+  </div>
+</dialog>
+
+<script type="module" src="assets/js/assessment/assessment.js"></script>
+</body>
+</html>
