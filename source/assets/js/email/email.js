@@ -38,9 +38,23 @@ export const EMAIL_STATUS = Object.freeze({
 /** Trava em memória contra duplo clique dentro da mesma sessão. */
 const enviosEmCurso = new Set();
 
-/** O endpoint seguro está configurado? */
+function preenchido(valor) {
+  return typeof valor === 'string' && valor.trim().length > 0;
+}
+
+/** Existe endpoint próprio, capaz de enviar também ao participante? */
+export function temEndpointProprio() {
+  return preenchido(CONFIG.email.endpoint);
+}
+
+/** Existe o aviso via FormSubmit, que só alcança a responsável? */
+export function temFormsubmit() {
+  return preenchido(CONFIG.email.formsubmit);
+}
+
+/** Algum canal de envio está configurado? */
 export function isConfigured() {
-  return typeof CONFIG.email.endpoint === 'string' && CONFIG.email.endpoint.trim().length > 0;
+  return temEndpointProprio() || temFormsubmit();
 }
 
 /**
@@ -121,7 +135,9 @@ export async function sendReport(relatorio, estado) {
   });
 
   try {
-    const resposta = await postComTimeout(CONFIG.email.endpoint, buildPayload(relatorio, estado));
+    const resposta = temEndpointProprio()
+      ? await postComTimeout(CONFIG.email.endpoint, buildPayload(relatorio, estado))
+      : await postFormsubmit(relatorio, estado);
 
     if (!resposta.ok) {
       throw new Error(resposta.detail || `HTTP ${resposta.status}`);
@@ -134,7 +150,10 @@ export async function sendReport(relatorio, estado) {
     });
     return {
       status: EMAIL_STATUS.ENVIADO,
-      message: 'Relatório enviado para o seu e-mail. Uma cópia foi enviada ao responsável pelo site.'
+      message: temEndpointProprio()
+        ? 'Relatório enviado para o seu e-mail. Uma cópia foi enviada ao responsável pelo site.'
+        : 'Recebemos sua análise e avisamos a responsável — ela entra em contato pelo e-mail que você informou. '
+          + 'Seu relatório completo está aqui nesta página: use o botão de imprimir para guardá-lo em PDF.'
     };
   } catch (erro) {
     const detalhe = erro && erro.message ? erro.message : String(erro);
@@ -150,6 +169,74 @@ export async function sendReport(relatorio, estado) {
     };
   } finally {
     enviosEmCurso.delete(chave);
+  }
+}
+
+/**
+ * Aviso à responsável via FormSubmit, quando não há endpoint próprio.
+ *
+ * O serviço só entrega no endereço ativado, então este caminho avisa a
+ * responsável mas NÃO manda o relatório ao participante — ele lê e imprime
+ * o relatório na própria página. `_replyto` faz o Responder ir direto para
+ * quem preencheu, e não para o FormSubmit.
+ */
+async function postFormsubmit(relatorio, estado) {
+  const p = relatorio.participant;
+
+  const campos = {
+    _subject: `${CONFIG.email.subjectAdmin} — ${p.name}`,
+    _template: 'table',
+    _captcha: 'false',
+    _replyto: p.email,
+    Nome: p.name,
+    'E-mail': p.email,
+    Telefone: p.phone || 'não informado',
+    Empresa: p.company || 'não informado',
+    Cargo: p.role || 'não informado',
+    Instrumento: CONFIG.assessment.instrument,
+    'Concluído em': relatorio.generatedAt || new Date().toISOString(),
+    'ID da análise': relatorio.assessmentId || '—'
+  };
+
+  relatorio.dimensions.forEach((d) => {
+    campos[d.name] = `${Math.round(d.index)}/100 — ${d.band.labelF}`;
+  });
+
+  if (estado && estado.consent) {
+    campos['Consentimento'] = 'registrado';
+  }
+
+  const url = `https://formsubmit.co/ajax/${encodeURIComponent(CONFIG.email.formsubmit)}`;
+  const controlador = new AbortController();
+  const timer = window.setTimeout(() => controlador.abort(), CONFIG.email.timeoutMs);
+
+  try {
+    const resposta = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(campos),
+      signal: controlador.signal
+    });
+
+    const texto = await resposta.text();
+    let corpo = {};
+    try {
+      corpo = texto ? JSON.parse(texto) : {};
+    } catch (erro) {
+      corpo = { message: texto };
+    }
+
+    // O FormSubmit responde 200 mesmo ao recusar: quem decide é o campo success.
+    const aceito = resposta.ok && String(corpo.success) === 'true';
+
+    return {
+      ok: aceito,
+      status: resposta.status,
+      detail: aceito ? null : corpo.message || `HTTP ${resposta.status}`,
+      body: corpo
+    };
+  } finally {
+    window.clearTimeout(timer);
   }
 }
 

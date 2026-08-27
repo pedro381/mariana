@@ -308,6 +308,9 @@
               _subject: 'Contato pelo site — ' + d.assunto + ' — ' + d.nome,
               _template: 'table',
               _captcha: 'false',
+              // Sem isto, responder ao e-mail recebido vai para o FormSubmit,
+              // e nao para a pessoa que preencheu o formulario.
+              _replyto: d.email,
               Nome: d.nome,
               'E-mail': d.email,
               Telefone: d.telefone || 'não informado',

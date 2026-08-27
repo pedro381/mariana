@@ -55,7 +55,21 @@ export const CONFIG = Object.freeze({
    * fromLabel  — nome exibido como remetente (o endereço real fica no servidor).
    */
   email: Object.freeze({
+    /**
+     * Função serverless própria (ver `servidor/enviar-relatorio.js`). É a única
+     * forma de o PARTICIPANTE receber o relatório por e-mail, porque só um
+     * servidor pode enviar para um destinatário arbitrário.
+     */
     endpoint: '',
+    /**
+     * Alternativa sem servidor: o FormSubmit aceita POST do navegador e avisa
+     * a responsável a cada análise concluída. Limitação importante — ele só
+     * entrega no endereço ativado (o de `adminEmail`), então NÃO consegue
+     * mandar o relatório para o participante. Nesse modo o participante lê e
+     * imprime o relatório na própria tela.
+     * Requer que a dona do e-mail clique uma vez no link de ativação.
+     */
+    formsubmit: 'mm.quim@gmail.com',
     adminEmail: 'mm.quim@gmail.com',
     fromLabel: 'Mariana Magalhães de Souza',
     subjectParticipant: 'Seu relatório de perfil comportamental',
