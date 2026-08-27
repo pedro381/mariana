@@ -233,8 +233,9 @@
   .nav-bar__hint { display: none; }
   .nav-bar .btn { flex: 1 1 0; }
   /* Em telas estreitas o atalho ganha a própria linha, acima de Anterior e
-     Próxima, para não espremer os três botões. */
-  .nav-bar__jump {
+     Próxima, para não espremer os três botões. O seletor repete `.nav-bar`
+     para vencer a regra `.nav-bar .btn { flex: 1 1 0 }` acima. */
+  .nav-bar .nav-bar__jump {
     order: -1;
     flex: 1 0 100%;
     margin-bottom: 4px;

@@ -24,7 +24,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css">
+<!-- ?v= força o navegador a buscar a versão nova: o GitHub Pages serve os
+     assets com Cache-Control: max-age=600, então sem isso um visitante
+     recorrente rodaria CSS/JS velhos por até 10 minutos após cada deploy.
+     Incremente a cada mudança em styles.css ou main.js. -->
+<link rel="stylesheet" href="assets/css/styles.css?v=2">
 
 <script type="application/ld+json">
 {
@@ -1031,6 +1035,6 @@
   <svg aria-hidden="true"><use href="#i-arrow-up"></use></svg>
 </button>
 
-<script src="assets/js/main.js" defer></script>
+<script src="assets/js/main.js?v=2" defer></script>
 </body>
 </html>
