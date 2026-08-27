@@ -196,12 +196,16 @@ p:last-child { margin-bottom: 0; }
   transition: color .18s ease, background .18s ease;
 }
 
-/* Entre o fim do menu mobile e as telas largas o espaco fica curto:
-   os links se comprimem e o botao de WhatsApp do topo sai de cena — a mesma
-   acao continua no hero, na secao de contato e no rodape. */
-@media (min-width: 1021px) and (max-width: 1300px) {
-  .nav__links a { padding: 8px 6px; font-size: 13.5px; }
+/* Com dez itens o menu precisa de mais folga que o corpo do site: o cabecalho
+   usa um container um pouco mais largo e links compactos. Entre 1121 e 1300px
+   o botao de WhatsApp do topo sai de cena — a mesma acao continua no hero, na
+   secao de contato e no rodape. */
+@media (min-width: 1121px) {
+  .nav__inner { max-width: 1320px; margin-inline: auto; }
+  .nav__links a { padding: 8px 8px; font-size: 13.8px; }
   .nav__actions { gap: 8px; }
+}
+@media (min-width: 1121px) and (max-width: 1300px) {
   .nav__cta { display: none; }
 }
 .nav__links a:hover { color: var(--ink); background: var(--primary-soft); }
@@ -230,7 +234,7 @@ p:last-child { margin-bottom: 0; }
 
 .nav__toggle { display: none; }
 
-@media (max-width: 1020px) {
+@media (max-width: 1120px) {
   .nav__links {
     position: fixed; inset: 70px 0 auto 0;
     flex-direction: column; align-items: stretch; gap: 2px;

@@ -76,7 +76,7 @@
     });
     $$('a', links).forEach(function (a) { a.addEventListener('click', fechar); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fechar(); });
-    window.addEventListener('resize', function () { if (window.innerWidth > 1020) fechar(); });
+    window.addEventListener('resize', function () { if (window.innerWidth > 1120) fechar(); });
   })();
 
   /* ---------- Sombra na nav + botao voltar ao topo ---------- */
