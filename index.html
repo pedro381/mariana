@@ -1,11 +1,983 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello World</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mariana Magalhães de Souza — Engenharia da Qualidade e Desenvolvimento Humano</title>
+<meta name="description" content="Engenheira Química e Analista de Qualidade em Belo Horizonte. Implantação de Sistemas de Gestão da Qualidade (ISO 9001, BPF, BPL, CAPA) e coaching de desenvolvimento pessoal com a metodologia Matriz Humana.">
+<meta name="author" content="Mariana Magalhães de Souza">
+<meta name="theme-color" content="#0F5751">
+
+<link rel="canonical" href="https://pedro381.github.io/mariana/">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://pedro381.github.io/mariana/">
+<meta property="og:site_name" content="Mariana Magalhães de Souza">
+<meta property="og:title" content="Mariana Magalhães de Souza — Qualidade e Desenvolvimento Humano">
+<meta property="og:description" content="Processos são feitos por pessoas. Engenharia da Qualidade, ISO 9001 e coaching com a metodologia Matriz Humana.">
+<meta property="og:image" content="https://pedro381.github.io/mariana/assets/img/retrato-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230F5751'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' font-weight='600' fill='%23fff' text-anchor='middle'%3EMM%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mariana Magalhães de Souza",
+  "jobTitle": "Analista de Garantia da Qualidade | Coach",
+  "email": "mailto:mm.quim@gmail.com",
+  "telephone": "+55-31-99181-7141",
+  "url": "https://www.linkedin.com/in/marianamagalhaesouza/",
+  "sameAs": ["https://www.linkedin.com/in/marianamagalhaesouza/"],
+  "address": { "@type": "PostalAddress", "addressLocality": "Belo Horizonte", "addressRegion": "MG", "addressCountry": "BR" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "PUC Minas" },
+  "knowsAbout": ["Gestão da Qualidade", "ISO 9001", "Boas Práticas de Fabricação", "Boas Práticas de Laboratório", "CAPA", "Lean Six Sigma", "Engenharia Química", "Coaching", "Desenvolvimento Humano"]
+}
+</script>
 </head>
 <body>
-  <h1>Hello World!</h1>
+
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- ============ sprite de ícones ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<defs>
+  <symbol id="i-flask" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 3h6M10 3v6.5L4.7 18.3A2 2 0 0 0 6.4 21h11.2a2 2 0 0 0 1.7-2.7L14 9.5V3"/><path d="M7.5 15h9"/>
+  </symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2.5 14 9l6.5 2-6.5 2-2 6.5-2-6.5L3.5 11 10 9z"/><path d="M18.5 3v3M20 4.5h-3"/>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m4.5 12.5 5 5 10-11"/>
+  </symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2.5 4 6v6.5c0 4.6 3.3 7.9 8 9 4.7-1.1 8-4.4 8-9V6z"/><path d="m9 12 2 2 4-4.5"/>
+  </symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 3v16.5A1.5 1.5 0 0 0 4.5 21H21"/><path d="m7 15 3.5-4 3 2.5L20 7"/>
+  </symbol>
+  <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 20v-1.5a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4V20"/><circle cx="9" cy="7" r="3.5"/><path d="M22 20v-1.5a4 4 0 0 0-3-3.87M16.5 3.6a3.5 3.5 0 0 1 0 6.8"/>
+  </symbol>
+  <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5.2-5.2 2 2-5.2z"/>
+  </symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 2.5H7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7.5z"/><path d="M14 2.5v5h5M8.5 13h7M8.5 17h4.5"/>
+  </symbol>
+  <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="9" r="6"/><path d="m8.2 14.3-1.4 7 5.2-2.8 5.2 2.8-1.4-7"/>
+  </symbol>
+  <symbol id="i-seed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 21v-8"/><path d="M12 13C12 8 8 4.5 3.5 4.5 3.5 9.5 7.5 13 12 13z"/><path d="M12.8 12.2c0-4 3.3-7 7-7 0 4-3.2 7-7 7z"/>
+  </symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="3.2"/><path d="M19.4 14.5a1.6 1.6 0 0 0 .32 1.77l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.6 1.6 0 0 0-1.77-.32 1.6 1.6 0 0 0-.97 1.47V21a2 2 0 0 1-4 0v-.1a1.6 1.6 0 0 0-1.05-1.47 1.6 1.6 0 0 0-1.77.32l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.6 1.6 0 0 0 .32-1.77 1.6 1.6 0 0 0-1.47-.97H3a2 2 0 0 1 0-4h.1a1.6 1.6 0 0 0 1.47-1.05 1.6 1.6 0 0 0-.32-1.77l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.6 1.6 0 0 0 1.77.32H9a1.6 1.6 0 0 0 .97-1.47V3a2 2 0 0 1 4 0v.1a1.6 1.6 0 0 0 .97 1.47 1.6 1.6 0 0 0 1.77-.32l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.6 1.6 0 0 0-.32 1.77V9a1.6 1.6 0 0 0 1.47.97H21a2 2 0 0 1 0 4h-.1a1.6 1.6 0 0 0-1.5.97z"/>
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 6.5 9 6.5 9-6.5"/>
+  </symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47 0 1.46 1.06 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/>
+    <path d="M12.04 2.5c-5.24 0-9.5 4.26-9.5 9.5 0 1.68.44 3.3 1.28 4.74L2.5 21.5l4.9-1.28a9.46 9.46 0 0 0 4.64 1.2h.01c5.23 0 9.49-4.26 9.49-9.5s-4.26-9.42-9.5-9.42m0 17.4h-.01a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-2.99.78.8-2.91-.19-.3a7.87 7.87 0 0 1-1.21-4.2c0-4.35 3.55-7.9 7.91-7.9 2.11 0 4.1.83 5.59 2.32a7.85 7.85 0 0 1 2.31 5.59c0 4.36-3.54 7.9-7.9 7.9" fill-rule="evenodd"/>
+  </symbol>
+  <symbol id="i-in" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13M7.12 20.45H3.55V9h3.57zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0"/>
+  </symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.3A8.6 8.6 0 0 1 9.7 3.5a8.6 8.6 0 1 0 10.8 10.8"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8.5 7 7 7-7"/></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5M5.5 11.5 12 5l6.5 6.5"/></symbol>
+  <symbol id="i-arrow-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16 16 8M9 8h7v7"/></symbol>
+</defs>
+</svg>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="#topo" aria-label="Mariana Magalhães de Souza — início">
+      <span class="brand__mark" aria-hidden="true">MM</span>
+      <span class="brand__txt">
+        <span class="brand__name">Mariana Magalhães</span>
+        <span class="brand__role">Qualidade &amp; Desenvolvimento</span>
+      </span>
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="Navegação principal">
+      <a href="#sobre">Sobre</a>
+      <a href="#atuacao">Atuação</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#matriz">Matriz Humana</a>
+      <a href="#metodo">Método</a>
+      <a href="#trajetoria">Trajetória</a>
+      <a href="#formacao">Formação</a>
+      <a href="#reflexoes">Reflexões</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <div class="nav__actions">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Alternar tema claro e escuro">
+        <svg class="i-sun" aria-hidden="true"><use href="#i-sun"></use></svg>
+        <svg class="i-moon" aria-hidden="true"><use href="#i-moon"></use></svg>
+      </button>
+      <a class="btn btn--accent btn--sm nav__cta" href="https://wa.me/5531991817141?text=Ol%C3%A1%2C%20Mariana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener">
+        <svg aria-hidden="true"><use href="#i-wa"></use></svg> Falar comigo
+      </a>
+      <button class="icon-btn nav__toggle" id="navToggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+        <svg aria-hidden="true"><use href="#i-menu"></use></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="topo">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <svg class="hero__mesh" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <pattern id="hex" width="56" height="97" patternUnits="userSpaceOnUse" patternTransform="scale(1.3)">
+        <path d="M28 0 56 16v32L28 64 0 48V16z" fill="none" stroke="currentColor" stroke-width="0.7" opacity="0.16"/>
+        <circle cx="28" cy="0" r="1.6" fill="currentColor" opacity="0.2"/>
+        <circle cx="56" cy="16" r="1.6" fill="currentColor" opacity="0.2"/>
+        <circle cx="0" cy="48" r="1.6" fill="currentColor" opacity="0.2"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#hex)"/>
+  </svg>
+
+  <div class="wrap hero__inner">
+    <div class="hero__copy">
+      <span class="hero__badge"><span class="dot" aria-hidden="true"></span> Belo Horizonte, MG &nbsp;·&nbsp; <b>Atendimento online para todo o Brasil</b></span>
+
+      <h1>Mariana Magalhães<span class="l2">de Souza</span></h1>
+
+      <p class="hero__lede">
+        Engenheira Química e Analista de Garantia da Qualidade. Especialista em <strong>Matriz Humana</strong> pelo IGT.
+        Trabalho nas duas pontas do mesmo problema: <strong>o processo que precisa de padrão</strong> e
+        <strong>a pessoa que precisa de clareza</strong>.
+      </p>
+
+      <div class="hero__chips">
+        <span class="chip">MEng em Engenharia e Gestão da Qualidade</span>
+        <span class="chip">Lean Six Sigma Green Belt</span>
+        <span class="chip">ISO 9001 · BPF · BPL · CAPA</span>
+        <span class="chip chip--accent">Coach · Matriz Humana</span>
+      </div>
+
+      <div class="hero__cta">
+        <a class="btn btn--accent" href="https://wa.me/5531991817141?text=Ol%C3%A1%2C%20Mariana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-wa"></use></svg> Conversar no WhatsApp
+        </a>
+        <a class="btn btn--ghost" href="#atuacao">Como posso ajudar</a>
+      </div>
+    </div>
+
+    <div class="hero__figure">
+      <div class="portrait">
+        <img src="assets/img/retrato-hero.jpg" alt="Retrato de Mariana Magalhães de Souza" width="800" height="1000" fetchpriority="high">
+      </div>
+      <div class="float-card float-card--a">
+        <span class="float-card__ico" aria-hidden="true"><svg><use href="#i-flask"></use></svg></span>
+        <span><b>+5 anos</b><span>em Qualidade</span></span>
+      </div>
+      <div class="float-card float-card--b float-card--accent">
+        <span class="float-card__ico" aria-hidden="true"><svg><use href="#i-seed"></use></svg></span>
+        <span><b>Matriz Humana</b><span>IGT International</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NÚMEROS ============ -->
+<section aria-label="Números da trajetória">
+  <div class="wrap">
+    <div class="stats reveal">
+      <div class="stat"><b>+5</b><span>anos de atuação em Qualidade</span></div>
+      <div class="stat"><b>5</b><span>setores: farmacêutico, produtos médicos, industrial, alimentício e saúde</span></div>
+      <div class="stat"><b>1</b><span>Sistema de Gestão da Qualidade implantado do zero</span></div>
+      <div class="stat"><b>10</b><span>certificações técnicas e comportamentais</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOBRE ============ -->
+<section class="section" id="sobre">
+  <div class="wrap">
+    <div class="about">
+      <div class="about__media reveal">
+        <img src="assets/img/retrato-cidade.jpg" alt="Mariana Magalhães de Souza" width="800" height="1000" loading="lazy">
+        <div class="about__stamp">
+          <b>Engenheira Química</b>
+          <span>PUC Minas · MEng em Engenharia e Gestão da Qualidade</span>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="sec-head" style="margin-bottom:26px">
+          <span class="eyebrow">Sobre mim</span>
+          <h2 class="sec-title">Processos são feitos por <em>pessoas</em>.</h2>
+        </div>
+
+        <div class="prose">
+          <p>
+            Tenho <strong>mais de 5 anos de experiência em Qualidade</strong>, com atuação consolidada em Garantia da Qualidade,
+            Controle da Qualidade e implantação de Sistemas de Gestão da Qualidade em empresas nacionais e multinacionais
+            dos segmentos farmacêutico, produtos médicos, industrial, alimentício e saúde.
+          </p>
+          <p>
+            Ao longo da minha trajetória, atuei na implantação e manutenção de SGQ conforme <strong>ISO 9001</strong>, com elaboração,
+            revisão e controle de documentos técnicos, fluxogramas, POPs, instruções de trabalho, protocolos e formulários.
+            Conduzi a gestão de não conformidades e a implementação de ações corretivas e preventivas (<strong>CAPA, OOT e OOS</strong>),
+            com análises de causa-raiz e de impacto em processos produtivos.
+          </p>
+          <p>
+            Também atuei em análises físico-químicas, gestão de estoques e rastreabilidade de insumos conforme a
+            <strong>ISO 17025</strong>, e em melhoria contínua com Lean, Kaizen e ferramentas da qualidade — Ishikawa, Pareto,
+            5 Porquês e 5W2H. Tenho domínio de <strong>SAP, Windchill e PLM</strong> e certificação <strong>Lean Six Sigma Green Belt</strong>.
+          </p>
+          <p>
+            Em paralelo, me formei <strong>Especialista em Matriz Humana pelo IGT | International Coaching</strong>. Foi ali que a
+            ficha caiu: em qualidade, não lidamos só com processos — lidamos com pessoas que tomam decisões dentro
+            desses processos. Hoje uno as duas frentes.
+          </p>
+        </div>
+
+        <blockquote class="pullquote">
+          <p>Ser multidisciplinar nunca foi falta de direção. Era construção.</p>
+          <cite>Mariana Magalhães de Souza</cite>
+        </blockquote>
+
+        <div class="hero__cta" style="margin-top:26px">
+          <a class="btn btn--primary" href="#trajetoria">Ver trajetória completa</a>
+          <a class="btn btn--ghost" href="https://www.linkedin.com/in/marianamagalhaesouza/" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#i-in"></use></svg> LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DUAS FRENTES ============ -->
+<section class="section section--alt" id="atuacao">
+  <div class="wrap">
+    <div class="sec-head sec-head--center reveal">
+      <span class="eyebrow">Atuação</span>
+      <h2 class="sec-title">Duas frentes, <em>uma mesma lógica</em></h2>
+      <p class="sec-sub">
+        Diagnosticar a causa-raiz, padronizar o que funciona e sustentar a melhoria.
+        O método é o mesmo — muda o objeto: às vezes é um processo, às vezes é uma carreira.
+      </p>
+    </div>
+
+    <div class="tracks">
+      <article class="track reveal">
+        <span class="track__ico" aria-hidden="true"><svg><use href="#i-flask"></use></svg></span>
+        <h3>Engenharia e Gestão da Qualidade</h3>
+        <p>Implantação e destravamento de Sistemas de Gestão da Qualidade — inclusive em operações que partem praticamente do zero em registros e estrutura formal.</p>
+        <ul class="track__list">
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> SGQ conforme ISO 9001, do diagnóstico ao controle operacional</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Documentação técnica: POPs, instruções de trabalho, protocolos e fluxogramas</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Não conformidades, CAPA, OOT/OOS e controle de mudanças</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Apoio a auditorias internas e externas e a processos de certificação</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Indicadores, relatórios gerenciais e treinamentos em BPF, BPL e 5S</li>
+        </ul>
+        <p class="track__who"><b>Para quem:</b> laboratórios, indústrias e operações em ambiente regulado que precisam estruturar, certificar ou reorganizar a qualidade.</p>
+      </article>
+
+      <article class="track track--human reveal">
+        <span class="track__ico" aria-hidden="true"><svg><use href="#i-seed"></use></svg></span>
+        <h3>Coach de Desenvolvimento Pessoal</h3>
+        <p>Autoconhecimento aplicado ao trabalho. Uso a <strong>Matriz Humana</strong> para tornar visível o comportamento que está por trás dos resultados — os seus e os do seu time.</p>
+        <ul class="track__list">
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Leitura de comportamento, valores, motivadores e autossabotadores</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Clareza de direção para transições e mudanças de carreira</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Construção de identidade profissional em trajetórias multidisciplinares</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Comunicação não violenta, escuta e relações que geram resultado</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Disciplina de desenvolvimento contínuo — o que ninguém vê nos bastidores</li>
+        </ul>
+        <p class="track__who"><b>Para quem:</b> profissionais técnicos em transição, lideranças de primeira viagem e times que precisam de alinhamento antes de precisarem de ferramenta.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVIÇOS ============ -->
+<section class="section" id="servicos">
+  <div class="wrap">
+    <div class="sec-head sec-head--center reveal">
+      <span class="eyebrow">Serviços</span>
+      <h2 class="sec-title">O que eu <em>entrego</em></h2>
+      <p class="sec-sub">Escopo definido junto com você, a partir do contexto real da operação ou do momento de carreira — não do cenário ideal.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card reveal">
+        <span class="card__tag">Qualidade</span>
+        <h3>Implantação de SGQ ISO 9001</h3>
+        <p>Do diagnóstico inicial e planejamento até a implementação, o controle operacional, a avaliação e a melhoria contínua. Estruturo do zero quando é preciso.</p>
+        <div class="card__meta"><span class="tagline">Diagnóstico</span><span class="tagline">Implantação</span><span class="tagline">Certificação</span></div>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__tag">Qualidade</span>
+        <h3>Documentação e padronização</h3>
+        <p>Elaboração, revisão e controle de POPs, instruções de trabalho, fluxogramas, protocolos e formulários — com conformidade documental e rastreabilidade.</p>
+        <div class="card__meta"><span class="tagline">POPs</span><span class="tagline">Fluxogramas</span><span class="tagline">Controle de mudanças</span></div>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__tag">Qualidade</span>
+        <h3>Investigação e melhoria contínua</h3>
+        <p>Tratamento de não conformidades, CAPA, OOT e OOS com análise de causa-raiz, plano de ação, indicadores e verificação de eficácia.</p>
+        <div class="card__meta"><span class="tagline">Ishikawa</span><span class="tagline">5 Porquês</span><span class="tagline">Pareto · 5W2H</span></div>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__tag card__tag--human">Desenvolvimento</span>
+        <h3>Sessões de coaching individual</h3>
+        <p>Encontros estruturados para sair do travamento: entender o que energiza, o que drena e qual é o próximo passo concreto — com acompanhamento.</p>
+        <div class="card__meta"><span class="tagline">Individual</span><span class="tagline">Online</span><span class="tagline">Plano de ação</span></div>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__tag card__tag--human">Desenvolvimento</span>
+        <h3>Assessment Matriz Humana</h3>
+        <p>Mapeamento comportamental nos quatro pilares — comportamento, valores, motivadores e autossabotadores — com devolutiva e leitura aplicada ao seu contexto.</p>
+        <div class="card__meta"><span class="tagline">Perfil comportamental</span><span class="tagline">Devolutiva</span></div>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__tag card__tag--human">Desenvolvimento</span>
+        <h3>Carreira técnica e liderança</h3>
+        <p>Para quem vem do laboratório, da indústria ou do campo e quer construir identidade profissional, repertório e presença — sem virar outra pessoa.</p>
+        <div class="card__meta"><span class="tagline">Transição</span><span class="tagline">Times</span><span class="tagline">Treinamentos</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MATRIZ HUMANA ============ -->
+<section class="section section--alt" id="matriz">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Metodologia</span>
+      <h2 class="sec-title">Matriz Humana: o comportamento <em>por trás</em> do resultado</h2>
+      <p class="sec-sub">
+        Uma abordagem que aprofunda a compreensão do comportamento humano a partir de quatro pilares —
+        comportamento, valores, motivadores e autossabotadores. Cada motivador explica o que nos energiza e,
+        na mesma medida, o que nos drena.
+      </p>
+    </div>
+
+    <div class="matrix reveal">
+      <div class="matrix__tabs" role="tablist" aria-label="Motivadores da Matriz Humana">
+        <button class="mtab" role="tab" id="tab-explorador" aria-controls="p-explorador" aria-selected="true" type="button">
+          <span class="mtab__ico" aria-hidden="true"><svg><use href="#i-compass"></use></svg></span> O Explorador
+        </button>
+        <button class="mtab" role="tab" id="tab-construtor" aria-controls="p-construtor" aria-selected="false" tabindex="-1" type="button">
+          <span class="mtab__ico" aria-hidden="true"><svg><use href="#i-gear"></use></svg></span> O Construtor
+        </button>
+        <button class="mtab" role="tab" id="tab-cuidador" aria-controls="p-cuidador" aria-selected="false" tabindex="-1" type="button">
+          <span class="mtab__ico" aria-hidden="true"><svg><use href="#i-users"></use></svg></span> O Cuidador
+        </button>
+        <button class="mtab" role="tab" id="tab-desafiante" aria-controls="p-desafiante" aria-selected="false" tabindex="-1" type="button">
+          <span class="mtab__ico" aria-hidden="true"><svg><use href="#i-target"></use></svg></span> O Desafiante
+        </button>
+      </div>
+
+      <div class="matrix__panels">
+        <div class="mpanel" role="tabpanel" id="p-explorador" aria-labelledby="tab-explorador" tabindex="0">
+          <p class="mpanel__kicker">Motivador 01</p>
+          <h3>O Explorador</h3>
+          <p>Move-se pelo novo. Abre caminhos, testa hipóteses e enxerga possibilidade onde os outros veem risco. É quem tira o projeto do papel.</p>
+          <div class="mpanel__split">
+            <div class="mbox mbox--light"><h4>O que energiza</h4><p>Novidade, descoberta, contextos ainda não mapeados.</p></div>
+            <div class="mbox mbox--shadow"><h4>A sombra</h4><p>Pode perder constância — muitos começos, poucos fechamentos.</p></div>
+          </div>
+        </div>
+
+        <div class="mpanel" role="tabpanel" id="p-construtor" aria-labelledby="tab-construtor" tabindex="0" hidden>
+          <p class="mpanel__kicker">Motivador 02</p>
+          <h3>O Construtor</h3>
+          <p>Sustenta o que existe. Transforma improviso em rotina, cria estrutura e garante que o padrão sobreviva ao dia ruim.</p>
+          <div class="mpanel__split">
+            <div class="mbox mbox--light"><h4>O que energiza</h4><p>Processo, previsibilidade, coisas que funcionam de forma confiável.</p></div>
+            <div class="mbox mbox--shadow"><h4>A sombra</h4><p>Pode resistir a mudanças — o padrão vira fim, não meio.</p></div>
+          </div>
+        </div>
+
+        <div class="mpanel" role="tabpanel" id="p-cuidador" aria-labelledby="tab-cuidador" tabindex="0" hidden>
+          <p class="mpanel__kicker">Motivador 03</p>
+          <h3>O Cuidador</h3>
+          <p>Coloca a pessoa no centro. Percebe o que não foi dito, sustenta o time nos momentos difíceis e constrói confiança.</p>
+          <div class="mpanel__split">
+            <div class="mbox mbox--light"><h4>O que energiza</h4><p>Impacto humano, vínculo, sensação de estar contribuindo.</p></div>
+            <div class="mbox mbox--shadow"><h4>A sombra</h4><p>Pode assumir mais do que deveria — e sumir da própria agenda.</p></div>
+          </div>
+        </div>
+
+        <div class="mpanel" role="tabpanel" id="p-desafiante" aria-labelledby="tab-desafiante" tabindex="0" hidden>
+          <p class="mpanel__kicker">Motivador 04</p>
+          <h3>O Desafiante</h3>
+          <p>Eleva a régua. Não aceita o “está bom assim”, questiona o padrão vigente e puxa o grupo para um patamar acima.</p>
+          <div class="mpanel__split">
+            <div class="mbox mbox--light"><h4>O que energiza</h4><p>Meta ambiciosa, superação, excelência visível.</p></div>
+            <div class="mbox mbox--shadow"><h4>A sombra</h4><p>Pode transformar tudo em pressão — inclusive o que já estava bom.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="block-title reveal" style="margin-top:clamp(36px,5vw,56px)">Toda virtude, em excesso, vira sombra</p>
+    <div class="shadows reveal">
+      <div class="shadow-item"><b>Excelência</b><span class="arrow" aria-hidden="true">↓</span><span class="s">rigidez</span></div>
+      <div class="shadow-item"><b>Harmonia</b><span class="arrow" aria-hidden="true">↓</span><span class="s">omissão</span></div>
+      <div class="shadow-item"><b>Prudência</b><span class="arrow" aria-hidden="true">↓</span><span class="s">medo</span></div>
+      <div class="shadow-item"><b>Lógica</b><span class="arrow" aria-hidden="true">↓</span><span class="s">desconexão</span></div>
+    </div>
+
+    <div class="matrix__question reveal">
+      <p class="q-old">Qual é o erro do processo?</p>
+      <p class="q-new">Que comportamento está por trás desse resultado?</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MÉTODO ============ -->
+<section class="section" id="metodo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Como eu trabalho</span>
+      <h2 class="sec-title">Ferramentas não são o problema — <em>o travamento é</em></h2>
+      <p class="sec-sub">
+        A gente fala o tempo todo de métodos, frameworks e tecnologia. Mas o que mais aparece na prática é gente
+        esperando o cenário ideal para começar. Meu método começa pelo que já existe.
+      </p>
+    </div>
+
+    <div class="steps">
+      <article class="step reveal">
+        <span class="step__n">01</span>
+        <h3>Escutar</h3>
+        <p>Entender o contexto real — a operação como ela é hoje, com os registros que existem e os que faltam. Sem julgamento antes da compreensão.</p>
+      </article>
+      <article class="step reveal">
+        <span class="step__n">02</span>
+        <h3>Mapear a causa</h3>
+        <p>Ishikawa, Pareto, 5 Porquês e 5W2H no processo. Comportamento, valores e motivadores na pessoa. Quase sempre a resposta está nos dois.</p>
+      </article>
+      <article class="step reveal">
+        <span class="step__n">03</span>
+        <h3>Padronizar</h3>
+        <p>Transformar o que funciona em rotina: POP, instrução de trabalho, indicador, acordo. O padrão é o que protege o resultado no dia ruim.</p>
+      </article>
+      <article class="step reveal">
+        <span class="step__n">04</span>
+        <h3>Sustentar</h3>
+        <p>Treinar, medir, revisar. Melhoria contínua vale para o processo e para a pessoa — os melhores continuam treinando.</p>
+      </article>
+    </div>
+
+    <div class="gallery reveal" style="margin-top:clamp(40px,5vw,64px)">
+      <figure>
+        <img src="assets/img/lab-capela.jpg" alt="Mariana operando uma montagem de vidraria em capela de exaustão" loading="lazy">
+        <figcaption>Bancada: montagem em capela de exaustão</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/img/lab-instrumento.jpg" alt="Mariana operando instrumentação analítica em laboratório" loading="lazy">
+        <figcaption>Instrumentação e análise de dados</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/img/lab-epi.jpg" alt="Mariana paramentada com EPI em área controlada de laboratório" loading="lazy">
+        <figcaption>Área controlada: BPL na prática</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRAJETÓRIA ============ -->
+<section class="section section--alt" id="trajetoria">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Trajetória</span>
+      <h2 class="sec-title">Laboratório, indústria, campo e <em>ambientes regulados</em></h2>
+      <p class="sec-sub">Rotinas técnicas completamente diferentes — e cada contexto desenvolveu uma parte da profissional que estou me tornando.</p>
+    </div>
+
+    <div class="tl reveal">
+
+      <article class="tl__item tl__item--now">
+        <p class="tl__when">jul 2026 — atual <span class="tl__now-pill">Atual</span></p>
+        <h3 class="tl__role">Analista de Garantia da Qualidade</h3>
+        <p class="tl__org">Mediphacos <span class="sep">·</span> <span class="place">Tempo integral</span></p>
+        <ul class="tl__body">
+          <li>Garantia da Qualidade em indústria de produtos médicos, em ambiente de alta exigência regulatória.</li>
+        </ul>
+      </article>
+
+      <article class="tl__item">
+        <p class="tl__when">set 2024 — ago 2026 · 2 anos</p>
+        <h3 class="tl__role">Analista de Laboratório &amp; Técnica Química Sênior</h3>
+        <p class="tl__org">NanoBrasil <span class="sep">·</span> <span class="place">Belo Horizonte, MG</span></p>
+        <ul class="tl__body">
+          <li>Implantação, desenvolvimento e aprimoramento do Sistema de Gestão da Qualidade conforme ISO 9001, em ambiente que partiu praticamente do zero em registros e estrutura formal de qualidade.</li>
+          <li>Construção de procedimentos, formulários, protocolos e cultura de qualidade na operação.</li>
+          <li>Apoio em auditorias internas e externas, atuando como ponto de contato em adequações de terceiros e para certificações.</li>
+        </ul>
+        <div class="tl__collapse" hidden>
+          <ul class="tl__body" style="margin-top:8px">
+            <li>Elaboração, revisão e controle de documentos técnicos, fluxogramas, POPs e instruções de trabalho.</li>
+            <li>Análises de impacto em processos produtivos e rotinas de qualificação e validação, com relatórios técnicos.</li>
+            <li>Participação no ciclo de Controle de Mudanças, com protocolos, CAPAs e documentação técnica relacionada.</li>
+            <li>Planejamento e execução de treinamentos sobre Boas Práticas de Laboratório (BPL) e requisitos do SGQ.</li>
+            <li>Gestão e otimização dos processos laboratoriais, com monitoramento de indicadores e relatórios gerenciais.</li>
+            <li>Estratégias para controle e redução de perdas na produção laboratorial e eficiência no uso de matérias-primas.</li>
+            <li>Gerenciamento de estoques e rastreabilidade de insumos conforme ordens de produção e requisitos regulatórios.</li>
+            <li>Análises químicas e físicas de aditivos, com testes de eficácia em diferentes condições de uso.</li>
+            <li>Participação ativa na inovação de aditivos com nanopartículas para novas aplicações industriais.</li>
+            <li>Implementação do 5S no laboratório, com treinamentos e programas de conscientização.</li>
+          </ul>
+        </div>
+        <button class="tl__more" type="button" aria-expanded="false">Ver todas as atividades <svg aria-hidden="true"><use href="#i-chev"></use></svg></button>
+      </article>
+
+      <article class="tl__item">
+        <p class="tl__when">mar 2024 — ago 2024 · 6 meses</p>
+        <h3 class="tl__role">Estagiária de Engenharia de Processos</h3>
+        <p class="tl__org">Liga Lean Coreu <span class="sep">·</span> <span class="place">Belo Horizonte, MG</span></p>
+        <ul class="tl__body">
+          <li>Aplicação da filosofia e das ferramentas Lean em cases práticos, com foco em otimização de processos e eliminação de desperdícios.</li>
+          <li>Visitas técnicas para mapeamento e análise de processos, identificando gargalos e oportunidades de melhoria.</li>
+          <li>Investigação de causa-raiz com fluxograma de processo, Ishikawa, Pareto, gráficos de controle, histograma, 5 Porquês e 5W2H.</li>
+          <li>Participação em competições estudantis e apresentações em eventos sobre Lean.</li>
+        </ul>
+      </article>
+
+      <article class="tl__item">
+        <p class="tl__when">jun 2022 — nov 2023 · 1 ano e 6 meses</p>
+        <h3 class="tl__role">Estagiária de Engenharia da Qualidade</h3>
+        <p class="tl__org">Abbott <span class="sep">·</span> <span class="place">Belo Horizonte, MG</span></p>
+        <ul class="tl__body">
+          <li>Gestão de não conformidades e implementação de ações corretivas e preventivas (CAPA, OOT e OOS), com análises de causa-raiz e planos de ação para redução de desvios.</li>
+          <li>Projetos de obsolescência, validação, qualificação e monitoramento de processos, com investigações detalhadas.</li>
+          <li>Liderança da equipe de estagiários do projeto, com autonomia no planejamento, coordenação e execução.</li>
+        </ul>
+        <div class="tl__collapse" hidden>
+          <ul class="tl__body" style="margin-top:8px">
+            <li>Investigação e categorização de reclamações de clientes: registros sistêmicos, avaliação inicial de gravidade e impacto e compilação de dados.</li>
+            <li>Participação no ciclo de Controle de Mudanças, com protocolos, relatórios de avaliação e análises de impacto em processos produtivos.</li>
+            <li>Gestão e atualização de documentos técnicos: fluxogramas, procedimentos da qualidade, instruções de trabalho e formulários.</li>
+            <li>Mapeamento e análise de processos produtivos no setor de embalagem.</li>
+            <li>Apoio na preparação e condução de auditorias da qualidade.</li>
+            <li>Atualização e gestão de indicadores da planta para reporte à divisão.</li>
+          </ul>
+        </div>
+        <div class="tl__result">
+          <b>Resultados:</b> implementação de Trabalho Padrão e ferramenta de gestão diária com KPIs (projeto A3 e Kaizen);
+          implementação da Gestão Diária com coleta de dados de operadores e reunião gerencial semanal entre áreas.
+        </div>
+        <button class="tl__more" type="button" aria-expanded="false">Ver todas as atividades <svg aria-hidden="true"><use href="#i-chev"></use></svg></button>
+      </article>
+
+      <article class="tl__item">
+        <p class="tl__when">nov 2021 — abr 2022 · 6 meses</p>
+        <h3 class="tl__role">Estagiária de Garantia da Qualidade</h3>
+        <p class="tl__org">Bunge <span class="sep">·</span> <span class="place">Minas Gerais</span></p>
+        <ul class="tl__body">
+          <li>Acompanhamento de indicadores operacionais e de qualidade, garantindo a precisão dos dados.</li>
+          <li>Execução e monitoramento de atividades de APPCC, validações e verificações em segurança de alimentos.</li>
+          <li>Apoio na condução de treinamentos sobre a metodologia 5S.</li>
+        </ul>
+        <div class="tl__result">
+          <b>Resultados:</b> identificação mais rápida de ações corretivas e preventivas, com decisões mais eficazes e ganho
+          de eficiência operacional; melhoria na organização, limpeza e redução de desperdícios com conscientização dos operadores.
+        </div>
+      </article>
+
+      <article class="tl__item">
+        <p class="tl__when">2017 — 2019</p>
+        <h3 class="tl__role">Monitora de Química Inorgânica e Ambiental</h3>
+        <p class="tl__org">PUC Minas <span class="sep">·</span> <span class="place">Belo Horizonte, MG</span></p>
+        <ul class="tl__body">
+          <li>Primeira monitora da disciplina — identificou a necessidade e se voluntariou após conversar com a professora.</li>
+          <li>Assessoramento individual e em grupo de estudantes e intermediação entre professores e alunos.</li>
+        </ul>
+        <div class="tl__result"><b>Resultado:</b> aumento no índice de aprovação das turmas, aproximando-se dos 100%.</div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FORMAÇÃO ============ -->
+<section class="section" id="formacao">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Formação e credenciais</span>
+      <h2 class="sec-title">Estudo <em>continuado</em>, técnico e humano</h2>
+      <p class="sec-sub">Os melhores continuam treinando — não porque lhes falta conhecimento, mas porque entenderam que crescimento é um processo contínuo.</p>
+    </div>
+
+    <div class="edu-grid">
+      <div class="reveal">
+        <p class="block-title">Formação acadêmica</p>
+        <div class="edu-list">
+          <article class="edu">
+            <div class="edu__top">
+              <h3>Master of Engineering (MEng) — Engenharia e Gestão da Qualidade</h3>
+              <span class="edu__when">2025 — 2027</span>
+            </div>
+            <p class="edu__org">PUC Minas · em curso</p>
+            <p class="edu__note">Programa baseado na ASQ — American Society for Quality, com foco na formação de Engenheiro da Qualidade.</p>
+          </article>
+
+          <article class="edu">
+            <div class="edu__top">
+              <h3>Engenharia Química</h3>
+              <span class="edu__when">2017 — 2024</span>
+            </div>
+            <p class="edu__org">PUC Minas</p>
+            <p class="edu__note">Monitora de Química Inorgânica e Ambiental — primeira monitora da disciplina, com aumento do índice de aprovação das turmas.</p>
+          </article>
+
+          <article class="edu">
+            <div class="edu__top">
+              <h3>Técnico em Química</h3>
+              <span class="edu__when">2012 — 2013</span>
+            </div>
+            <p class="edu__org">CECON</p>
+          </article>
+
+          <article class="edu edu--muted">
+            <div class="edu__top">
+              <h3>Engenharia de Produção</h3>
+              <span class="edu__when">Trancado</span>
+            </div>
+            <p class="edu__org">PUC Minas</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <p class="block-title">Licenças e certificações</p>
+        <div class="cert-list">
+          <div class="cert">
+            <span class="cert__ico" aria-hidden="true"><svg><use href="#i-seed"></use></svg></span>
+            <div class="cert__txt">
+              <p class="cert__name">Especialista em Matriz Humana</p>
+              <p class="cert__org">IGT | International Coaching · <span class="yr">abr 2026</span></p>
+            </div>
+          </div>
+          <div class="cert">
+            <span class="cert__ico" aria-hidden="true"><svg><use href="#i-shield"></use></svg></span>
+            <div class="cert__txt">
+              <p class="cert__name">Implementação e Gerenciamento do SGQ</p>
+              <p class="cert__org">FM2S Educação e Consultoria · <span class="yr">jan 2026</span></p>
+            </div>
+          </div>
+          <div class="cert">
+            <span class="cert__ico" aria-hidden="true"><svg><use href="#i-spark"></use></svg></span>
+            <div class="cert__txt">
+              <p class="cert__name">Design Thinking</p>
+              <p class="cert__org">FM2S Educação e Consultoria · <span class="yr">set 2025</span></p>
+            </div>
+          </div>
+          <div class="cert">
+            <span class="cert__ico" aria-hidden="true"><svg><use href="#i-users"></use></svg></span>
+            <div class="cert__txt">
+              <p class="cert__name">Carisma: conquistar e influenciar pessoas</p>
+              <p class="cert__org">Escola Conquer · <span class="yr">ago 2025</span></p>
+            </div>
+          </div>
+          <div class="cert">
+            <span class="cert__ico" aria-hidden="true"><svg><use href="#i-users"></use></svg></span>
+            <div class="cert__txt">
+              <p class="cert__name">Human Relations: Connections that Drive Results</p>
+              <p class="cert__org">Escola Conquer · <span class="yr">ago 2025</span></p>
+            </div>
+          </div>
+          <div class="cert">
+            <span class="cert__ico" aria-hidden="true"><svg><use href="#i-award"></use></svg></span>
+            <div class="cert__txt">
+              <p class="cert__name">Formação de Auditores SGQ ISO 9001</p>
+              <p class="cert__org">Grupo Voitto · <span class="yr">jun 2025</span></p>
+            </div>
+          </div>
+          <div class="cert">
+            <span class="cert__ico" aria-hidden="true"><svg><use href="#i-users"></use></svg></span>
+            <div class="cert__txt">
+              <p class="cert__name">Comunicação Não Violenta</p>
+              <p class="cert__org">Enap · <span class="yr">jun 2025</span></p>
+            </div>
+          </div>
+          <div class="cert">
+            <span class="cert__ico" aria-hidden="true"><svg><use href="#i-award"></use></svg></span>
+            <div class="cert__txt">
+              <p class="cert__name">ISO 9001:2015 — Auditores Internos da Qualidade</p>
+              <p class="cert__org">Udemy · <span class="yr">ago 2024</span></p>
+            </div>
+          </div>
+          <div class="cert">
+            <span class="cert__ico" aria-hidden="true"><svg><use href="#i-shield"></use></svg></span>
+            <div class="cert__txt">
+              <p class="cert__name">MDSAP</p>
+              <p class="cert__org">KTN Consultoria &amp; Treinamento · <span class="yr">jan 2023</span></p>
+            </div>
+          </div>
+          <div class="cert">
+            <span class="cert__ico" aria-hidden="true"><svg><use href="#i-doc"></use></svg></span>
+            <div class="cert__txt">
+              <p class="cert__name">Processos Administrativos</p>
+              <p class="cert__org">Senai São Paulo · <span class="yr">jan 2013</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:clamp(44px,6vw,72px)">
+      <p class="block-title reveal">Competências e ferramentas</p>
+      <div class="skills">
+        <article class="skillbox reveal">
+          <div class="skillbox__head">
+            <span class="skillbox__ico" aria-hidden="true"><svg><use href="#i-shield"></use></svg></span>
+            <h3>Sistemas de gestão e regulatório</h3>
+          </div>
+          <ul>
+            <li>ISO 9001</li><li>ISO 17025</li><li>BPF</li><li>BPL</li><li>APPCC</li><li>MDSAP</li>
+            <li>Gestão da Qualidade</li><li>Auditoria interna</li><li>Auditorias externas</li><li>Gestão de conformidades</li>
+          </ul>
+        </article>
+
+        <article class="skillbox reveal">
+          <div class="skillbox__head">
+            <span class="skillbox__ico" aria-hidden="true"><svg><use href="#i-target"></use></svg></span>
+            <h3>Investigação e melhoria contínua</h3>
+          </div>
+          <ul>
+            <li>CAPA</li><li>OOT / OOS</li><li>Análise de causa-raiz (RCA)</li><li>Controle de mudanças</li>
+            <li>Lean Six Sigma Green Belt</li><li>Kaizen</li><li>PDCA</li><li>A3</li><li>Ishikawa</li>
+            <li>Pareto</li><li>5 Porquês</li><li>5W2H</li><li>5S</li>
+          </ul>
+        </article>
+
+        <article class="skillbox reveal">
+          <div class="skillbox__head">
+            <span class="skillbox__ico" aria-hidden="true"><svg><use href="#i-flask"></use></svg></span>
+            <h3>Laboratório e processos</h3>
+          </div>
+          <ul>
+            <li>Controle de qualidade</li><li>Análises físico-químicas</li><li>Qualificação e validação</li>
+            <li>Rastreabilidade de insumos</li><li>Gestão de estoques</li><li>Aditivos com nanopartículas</li>
+            <li>Processos operacionais</li><li>POPs e instruções de trabalho</li>
+          </ul>
+        </article>
+
+        <article class="skillbox reveal">
+          <div class="skillbox__head">
+            <span class="skillbox__ico" aria-hidden="true"><svg><use href="#i-chart"></use></svg></span>
+            <h3>Dados, sistemas e pessoas</h3>
+          </div>
+          <ul>
+            <li>SAP</li><li>Windchill</li><li>PLM</li><li>Minitab / CEP</li><li>Indicadores e KPIs</li>
+            <li>Relatórios gerenciais</li><li>Matriz Humana</li><li>Comunicação não violenta</li>
+            <li>Design Thinking</li><li>Treinamentos</li><li>Português</li><li>Inglês</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REFLEXÕES ============ -->
+<section class="section section--alt" id="reflexoes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Reflexões</span>
+      <h2 class="sec-title">O que eu ando <em>escrevendo</em></h2>
+      <p class="sec-sub">Textos que conectam qualidade, desenvolvimento humano e alta performance. Publicados no LinkedIn.</p>
+    </div>
+
+    <div class="posts">
+      <a class="post reveal" href="https://www.linkedin.com/in/marianamagalhaesouza/recent-activity/all/" target="_blank" rel="noopener">
+        <span class="post__kind">Artigo · abr 2026</span>
+        <h3>O que um machado no ferro velho me ensinou sobre ferramentas, propósito e desenvolvimento</h3>
+        <p>Um machado cortando ferro pode parecer errado. Mas diz muito sobre adaptação, ação e propósito — e sobre a gente que fica travada esperando a ferramenta certa.</p>
+        <span class="post__foot">Ler no LinkedIn <svg aria-hidden="true"><use href="#i-arrow-out"></use></svg></span>
+      </a>
+
+      <a class="post reveal" href="https://www.linkedin.com/in/marianamagalhaesouza/recent-activity/all/" target="_blank" rel="noopener">
+        <span class="post__kind">Artigo · jun 2025</span>
+        <h3>Cura. Processo de despertar</h3>
+        <p>Era uma vez uma crise que virou oportunidade. O lado A e o lado B da fita da minha vida ganham agora uma face C.</p>
+        <span class="post__foot">Ler no LinkedIn <svg aria-hidden="true"><use href="#i-arrow-out"></use></svg></span>
+      </a>
+
+      <a class="post reveal" href="https://www.linkedin.com/in/marianamagalhaesouza/recent-activity/all/" target="_blank" rel="noopener">
+        <span class="post__kind">Publicação</span>
+        <h3>Os bastidores do desenvolvimento</h3>
+        <p>As pessoas costumam enxergar os resultados. Raramente enxergam as horas de estudo depois do expediente, as mentorias que desafiam crenças, a disciplina de continuar quando ninguém está olhando.</p>
+        <span class="post__foot">Ler no LinkedIn <svg aria-hidden="true"><use href="#i-arrow-out"></use></svg></span>
+      </a>
+
+      <a class="post reveal" href="https://www.linkedin.com/in/marianamagalhaesouza/recent-activity/all/" target="_blank" rel="noopener">
+        <span class="post__kind">Publicação</span>
+        <h3>Ser multidisciplinar nunca foi falta de direção</h3>
+        <p>Laboratório, indústria, campo, ambientes regulados, processos, qualidade. Por muito tempo achei minha trajetória “diversa demais” — hoje sei que era construção.</p>
+        <span class="post__foot">Ler no LinkedIn <svg aria-hidden="true"><use href="#i-arrow-out"></use></svg></span>
+      </a>
+
+      <a class="post reveal" href="https://www.linkedin.com/in/marianamagalhaesouza/recent-activity/all/" target="_blank" rel="noopener">
+        <span class="post__kind">Publicação</span>
+        <h3>Toda virtude, em excesso, vira sombra</h3>
+        <p>Não lidamos só com processos — lidamos com pessoas que tomam decisões dentro desses processos. Melhorar processos também passa por entender gente.</p>
+        <span class="post__foot">Ler no LinkedIn <svg aria-hidden="true"><use href="#i-arrow-out"></use></svg></span>
+      </a>
+
+      <a class="post reveal" href="https://www.linkedin.com/in/marianamagalhaesouza/recent-activity/all/" target="_blank" rel="noopener">
+        <span class="post__kind">Publicação</span>
+        <h3>Compreensão antes do julgamento</h3>
+        <p>Busco viver a partir da compreensão antes do julgamento, da construção antes da crítica e da contribuição antes do reconhecimento.</p>
+        <span class="post__foot">Ler no LinkedIn <svg aria-hidden="true"><use href="#i-arrow-out"></use></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTATO ============ -->
+<section class="section" id="contato">
+  <div class="wrap">
+    <div class="contact">
+      <div class="reveal">
+        <span class="eyebrow">Contato</span>
+        <h2 class="sec-title">Vamos <em>conversar</em>?</h2>
+        <p class="sec-sub">
+          Se você precisa estruturar a qualidade da sua operação — ou está no ponto da carreira em que a próxima
+          decisão pesa mais do que a anterior — me chama. A primeira conversa é para entender o contexto.
+        </p>
+
+        <div class="contact-list">
+          <a class="contact-item contact-item--wa" href="https://wa.me/5531991817141?text=Ol%C3%A1%2C%20Mariana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener">
+            <span class="contact-item__ico" aria-hidden="true"><svg><use href="#i-wa"></use></svg></span>
+            <span class="contact-item__txt">
+              <span class="contact-item__lbl">WhatsApp</span>
+              <span class="contact-item__val">(31) 99181-7141</span>
+            </span>
+          </a>
+          <a class="contact-item" href="mailto:mm.quim@gmail.com">
+            <span class="contact-item__ico" aria-hidden="true"><svg><use href="#i-mail"></use></svg></span>
+            <span class="contact-item__txt">
+              <span class="contact-item__lbl">E-mail</span>
+              <span class="contact-item__val">mm.quim@gmail.com</span>
+            </span>
+          </a>
+          <a class="contact-item" href="https://www.linkedin.com/in/marianamagalhaesouza/" target="_blank" rel="noopener">
+            <span class="contact-item__ico" aria-hidden="true"><svg><use href="#i-in"></use></svg></span>
+            <span class="contact-item__txt">
+              <span class="contact-item__lbl">LinkedIn</span>
+              <span class="contact-item__val">/in/marianamagalhaesouza</span>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <form class="form reveal" id="contatoForm" novalidate>
+        <div class="field">
+          <label for="f-nome">Seu nome</label>
+          <input id="f-nome" name="nome" type="text" autocomplete="name" required placeholder="Como posso te chamar?">
+        </div>
+        <div class="field">
+          <label for="f-email">Seu e-mail</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required placeholder="Para eu conseguir te responder">
+        </div>
+        <div class="field">
+          <label for="f-fone">Telefone <span style="font-weight:400;color:var(--muted)">(opcional)</span></label>
+          <input id="f-fone" name="telefone" type="tel" autocomplete="tel" placeholder="(31) 90000-0000">
+        </div>
+        <div class="field">
+          <label for="f-assunto">Sobre o que você quer falar?</label>
+          <select id="f-assunto" name="assunto">
+            <option>Coaching de desenvolvimento pessoal</option>
+            <option>Assessment Matriz Humana</option>
+            <option>Implantação de SGQ / ISO 9001</option>
+            <option>Documentação e padronização de processos</option>
+            <option>Investigação, CAPA e melhoria contínua</option>
+            <option>Treinamentos para o time</option>
+            <option>Outro assunto</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-msg">Conta um pouco do contexto</label>
+          <textarea id="f-msg" name="mensagem" required placeholder="Qual é a situação hoje e o que você gostaria que fosse diferente?"></textarea>
+        </div>
+        <button class="btn btn--primary" id="formBtn" type="submit" style="width:100%">
+          <svg aria-hidden="true"><use href="#i-mail"></use></svg> <span id="formBtnTxt">Enviar mensagem</span>
+        </button>
+        <p class="form__status" id="formStatus" role="status" aria-live="polite" hidden></p>
+        <p class="form__note">
+          Seus dados são usados apenas para responder ao seu contato. Se preferir resposta mais rápida, use o WhatsApp.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ RODAPÉ ============ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div>
+        <p class="footer__brand">Mariana Magalhães de Souza</p>
+        <p class="footer__tag">Engenharia da Qualidade e desenvolvimento humano. Belo Horizonte, MG — atendimento online para todo o Brasil.</p>
+      </div>
+      <div>
+        <h4>Navegar</h4>
+        <ul>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#atuacao">Atuação</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#matriz">Matriz Humana</a></li>
+          <li><a href="#trajetoria">Trajetória</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="https://wa.me/5531991817141" target="_blank" rel="noopener">WhatsApp (31) 99181-7141</a></li>
+          <li><a href="mailto:mm.quim@gmail.com">mm.quim@gmail.com</a></li>
+          <li><a href="https://www.linkedin.com/in/marianamagalhaesouza/" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="ano">2026</span> Mariana Magalhães de Souza. Todos os direitos reservados.</span>
+      <span>Feito com atenção aos detalhes — como todo bom procedimento.</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" type="button" aria-label="Voltar ao topo">
+  <svg aria-hidden="true"><use href="#i-arrow-up"></use></svg>
+</button>
+
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>

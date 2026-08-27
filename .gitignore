@@ -1,0 +1,10 @@
+# Clones de referência (contêm .git próprio e quebrariam como submódulo)
+/source/
+
+# Fotos originais sem tratamento — o site publica as versões de assets/img/
+/img/
+
+# Sistema
+Thumbs.db
+desktop.ini
+.DS_Store
