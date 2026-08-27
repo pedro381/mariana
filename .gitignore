@@ -5,6 +5,11 @@
 # Fotos originais sem tratamento — o site publica as versões de assets/img/
 /img/
 
+# Dependências e segredos locais do Worker
+node_modules/
+.dev.vars
+.wrangler/
+
 # Sistema
 Thumbs.db
 desktop.ini

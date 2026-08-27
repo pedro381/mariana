@@ -1,0 +1,12 @@
+name = "contato-mariana"
+main = "contato-worker.js"
+compatibility_date = "2026-01-01"
+
+[vars]
+# Ajuste MAIL_FROM para um endereço do domínio verificado no Resend.
+MAIL_FROM        = "contato@marianamagalhaesouza.com.br"
+MAIL_TO          = "mm.quim@gmail.com"
+ORIGEM_PERMITIDA = "https://pedro381.github.io"
+
+# A chave NUNCA vai aqui. Grave como secret:
+#   npx wrangler secret put RESEND_API_KEY
