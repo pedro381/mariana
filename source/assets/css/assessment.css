@@ -207,6 +207,7 @@
   padding-inline: var(--pad);
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 12px;
 }
 .nav-bar .btn { flex: 0 0 auto; }
@@ -217,9 +218,27 @@
   text-align: center;
   flex: 1 1 auto;
 }
+
+/* Atalho de volta à revisão (ou para a primeira pendente). */
+.nav-bar__jump {
+  min-height: 40px;
+  padding: 8px 16px;
+  font-size: .88rem;
+  border-style: dashed;
+}
+/* Quando o atalho aparece, ele ocupa o lugar da dica. */
+.nav-bar__inner:has(.nav-bar__jump:not(.hidden)) .nav-bar__hint { display: none; }
+
 @media (max-width: 520px) {
   .nav-bar__hint { display: none; }
   .nav-bar .btn { flex: 1 1 0; }
+  /* Em telas estreitas o atalho ganha a própria linha, acima de Anterior e
+     Próxima, para não espremer os três botões. */
+  .nav-bar__jump {
+    order: -1;
+    flex: 1 0 100%;
+    margin-bottom: 4px;
+  }
 }
 
 .autosave {

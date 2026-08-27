@@ -16,7 +16,7 @@ import { QUESTIONS, TOTAL_QUESTIONS } from '../data/questions.js';
 import { SCALE } from './scale.js';
 import {
   questionAt, clampNumber, isFirst, isLast,
-  resumePoint, answeredCount, isComplete, missingNumbers
+  resumePoint, answeredCount, isComplete, missingNumbers, firstUnanswered
 } from './navigation.js';
 import { calculateBigFive } from '../scoring/big-five.js';
 import { generateReport } from '../report/report-generator.js';
@@ -31,7 +31,13 @@ const tela = {
   atual: 1,
   estado: null,
   modo: 'questionario', /* 'questionario' | 'revisao' | 'processando' */
-  timerSalvo: null
+  timerSalvo: null,
+  /**
+   * Verdadeiro quando a pessoa chegou nesta pergunta a partir do mapa da
+   * revisão. Nesse caso ela está conferindo um item específico, não
+   * percorrendo o questionário: ao responder, volta direto para a revisão.
+   */
+  origemRevisao: false
 };
 
 document.addEventListener('DOMContentLoaded', iniciar);
@@ -101,11 +107,19 @@ function montarOpcoes() {
  * ------------------------------------------------------------------ */
 
 function ligarEventos() {
-  $('#btnPrev').addEventListener('click', () => irPara(tela.atual - 1));
-  $('#btnNext').addEventListener('click', avancar);
+  $('#btnPrev').addEventListener('click', () => {
+    tela.origemRevisao = false;
+    irPara(tela.atual - 1);
+  });
+  $('#btnNext').addEventListener('click', () => {
+    tela.origemRevisao = false;
+    avancar();
+  });
+  $('#btnJump').addEventListener('click', atalhoDeNavegacao);
   $('#btnFinish').addEventListener('click', concluir);
   $('#btnBackToQuestions').addEventListener('click', () => {
     tela.modo = 'questionario';
+    tela.origemRevisao = false;
     irPara(tela.atual);
   });
 
@@ -140,11 +154,21 @@ function atalhos(evento) {
 
   if (evento.key === 'ArrowLeft') {
     evento.preventDefault();
+    tela.origemRevisao = false;
     irPara(tela.atual - 1);
   }
   if (evento.key === 'ArrowRight' || evento.key === 'Enter') {
     evento.preventDefault();
+    tela.origemRevisao = false;
     avancar();
+  }
+  /* Atalho de teclado para o mesmo destino do botão da barra inferior. */
+  if (evento.key === 'Escape') {
+    const botao = $('#btnJump');
+    if (botao && !botao.classList.contains('hidden')) {
+      evento.preventDefault();
+      atalhoDeNavegacao();
+    }
   }
 }
 
@@ -160,17 +184,72 @@ function responder(valor) {
 
   /*
    * Avanço automático: dá tempo de a pessoa ver a própria escolha marcada
-   * antes de trocar de pergunta. Na última, vai para a revisão.
+   * antes de trocar de pergunta.
+   *
+   * O destino depende de como ela chegou aqui:
+   * - veio do mapa da revisão para conferir um item → volta para a revisão;
+   * - está na última pergunta → segue para a revisão;
+   * - caso contrário → próxima pergunta.
    */
   window.setTimeout(() => {
     const aindaNaMesma = tela.modo === 'questionario';
     if (!aindaNaMesma) return;
-    if (isLast(tela.atual)) {
+    if (tela.origemRevisao || isLast(tela.atual)) {
       mostrarRevisao();
     } else {
       irPara(tela.atual + 1);
     }
   }, 220);
+}
+
+/**
+ * Ação do botão de atalho da barra inferior. O destino muda conforme a
+ * situação — ver `configurarAtalho`, que decide o rótulo.
+ */
+function atalhoDeNavegacao() {
+  const respostas = (tela.estado && tela.estado.answers) || {};
+
+  if (isComplete(respostas)) {
+    tela.origemRevisao = false;
+    mostrarRevisao();
+    return;
+  }
+
+  const pendente = firstUnanswered(respostas);
+  if (pendente !== null) {
+    tela.origemRevisao = false;
+    irPara(pendente);
+  }
+}
+
+/**
+ * Mostra (ou esconde) o atalho da barra inferior.
+ *
+ * Existe para resolver um beco sem saída real: com tudo respondido, tocar em
+ * uma pergunta antiga obrigava a avançar de uma em uma até o fim para voltar
+ * à revisão. Agora há sempre um caminho de volta em um toque.
+ */
+function configurarAtalho() {
+  const botao = $('#btnJump');
+  const respostas = (tela.estado && tela.estado.answers) || {};
+
+  if (isComplete(respostas)) {
+    botao.classList.remove('hidden');
+    botao.innerHTML = 'Revisão <span aria-hidden="true">↗</span>';
+    botao.setAttribute('aria-label', 'Voltar para a revisão e concluir a avaliação');
+    return;
+  }
+
+  const pendente = firstUnanswered(respostas);
+  if (pendente !== null && pendente !== tela.atual) {
+    botao.classList.remove('hidden');
+    botao.innerHTML = `Pendente <span aria-hidden="true">↗</span>`;
+    botao.setAttribute('aria-label', `Ir para a pergunta ${pendente}, a primeira sem resposta`);
+    return;
+  }
+
+  botao.classList.add('hidden');
+  botao.removeAttribute('aria-label');
 }
 
 function avancar() {
@@ -219,6 +298,8 @@ function renderizar() {
   secao.removeAttribute('data-anim');
   void secao.offsetWidth;
   secao.setAttribute('data-anim', 'in');
+
+  configurarAtalho();
 
   $('#btnPrev').disabled = isFirst(tela.atual);
   $('#btnNext').textContent = '';
@@ -299,7 +380,11 @@ function mostrarRevisao() {
   }).join('');
 
   grade.querySelectorAll('.review__cell').forEach((celula) => {
-    celula.addEventListener('click', () => irPara(Number(celula.dataset.num)));
+    celula.addEventListener('click', () => {
+      /* Conferindo um item pontual: ao responder, volta direto para a revisão. */
+      tela.origemRevisao = true;
+      irPara(Number(celula.dataset.num));
+    });
   });
 
   window.scrollTo({ top: 0, behavior: 'smooth' });

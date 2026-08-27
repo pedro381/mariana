@@ -7,21 +7,32 @@
   /* =======================================================
      ENVIO DO FORMULARIO
      -------------------------------------------------------
-     Sem backend configurado, o formulario monta a mensagem e
-     abre o programa de e-mail do visitante — funciona em
-     hospedagem estatica (GitHub Pages) sem servidor.
+     Tres caminhos, tentados nesta ordem:
 
-     Para enviar pelo servidor, publique um proxy (ex.: um
-     Cloudflare Worker) que guarde a chave do Resend como
-     variavel de ambiente e aponte "endpoint" para ele.
+     1. endpoint  — proxy proprio (ex.: Cloudflare Worker em
+        worker/). E a melhor opcao: os dados do visitante nao
+        passam por terceiros e a chave do Resend fica no
+        servidor. Exige dominio verificado no Resend e uma
+        conta na plataforma de funcoes.
+
+     2. formsubmit — servico que aceita POST do navegador e
+        reenvia por e-mail. Nao exige conta, dominio nem
+        deploy; basta o dono do e-mail clicar uma vez no link
+        de ativacao. Em troca, nome/e-mail/telefone do
+        visitante trafegam por um terceiro — considere isso
+        na politica de privacidade (LGPD).
+
+     3. mailto — abre o programa de e-mail do visitante.
+        Sempre disponivel como rede de seguranca.
 
      NUNCA coloque a chave do Resend neste arquivo: ele e
-     publico e a API tambem recusa chamada direta do
-     navegador (o preflight CORS e barrado).
+     publico, e a API do Resend tambem recusa chamada direta
+     do navegador (o preflight CORS e barrado).
      ======================================================= */
   var ENVIO = {
-    endpoint: '',                    // ex.: 'https://contato-mariana.SEU-SUB.workers.dev'
-    destino:  'mm.quim@gmail.com'
+    endpoint:   '',                    // ex.: 'https://contato-mariana.SEU-SUB.workers.dev'
+    formsubmit: 'mm.quim@gmail.com',   // '' desliga; exige ativacao unica pelo dono do e-mail
+    destino:    'mm.quim@gmail.com'
   };
 
   var WHATSAPP = '5531991817141';
@@ -272,8 +283,8 @@
         return;
       }
 
-      // Sem backend: abre o e-mail do visitante com tudo preenchido.
-      if (!ENVIO.endpoint) {
+      // Nenhum canal automatico: abre o e-mail do visitante com tudo preenchido.
+      if (!ENVIO.endpoint && !ENVIO.formsubmit) {
         window.location.href = montarMailto(d);
         mostrar('ok',
           'Abri seu programa de e-mail com a mensagem pronta — é só enviar. ' +
@@ -281,15 +292,31 @@
         return;
       }
 
-      // Com backend configurado (proxy que guarda a chave no servidor).
       ocupado(true);
       mostrar('info', 'Enviando sua mensagem...');
 
-      fetch(ENVIO.endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(d)
-      })
+      var requisicao = ENVIO.endpoint
+        ? fetch(ENVIO.endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(d)
+          })
+        : fetch('https://formsubmit.co/ajax/' + encodeURIComponent(ENVIO.formsubmit), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+              _subject: 'Contato pelo site — ' + d.assunto + ' — ' + d.nome,
+              _template: 'table',
+              _captcha: 'false',
+              Nome: d.nome,
+              'E-mail': d.email,
+              Telefone: d.telefone || 'não informado',
+              Assunto: d.assunto,
+              Mensagem: d.mensagem
+            })
+          });
+
+      requisicao
         .then(function (r) {
           return r.text().then(function (t) {
             var corpo = {};
@@ -298,7 +325,11 @@
           });
         })
         .then(function (res) {
-          if (!res.ok) throw new Error(res.corpo.message || ('HTTP ' + res.status));
+          // O FormSubmit responde HTTP 200 mesmo quando recusa: o que vale e o campo success.
+          var recusado = res.corpo && String(res.corpo.success) === 'false';
+          if (!res.ok || recusado) {
+            throw new Error(res.corpo.message || ('HTTP ' + res.status));
+          }
           ocupado(false);
           form.reset();
           mostrar('ok', 'Mensagem enviada. Vou te responder no e-mail que você informou.');
