@@ -339,7 +339,10 @@ p:last-child { margin-bottom: 0; }
 
 .about__media { position: relative; }
 .about__media img {
-  width: 100%; border-radius: var(--r-lg); border: 1px solid var(--line);
+  width: 100%;
+  /* height:auto anula o atributo height do HTML — sem isso o aspect-ratio e ignorado */
+  height: auto;
+  border-radius: var(--r-lg); border: 1px solid var(--line);
   box-shadow: var(--shadow-lg); aspect-ratio: 4/5; object-fit: cover;
 }
 .about__stamp {
